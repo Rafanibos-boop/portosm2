@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Experience | Rafa Febrianyah</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0d12;
+    --bg2:       #0d1117;
+    --cyan:      #00e5cc;
+    --cyan2:     #00bfa5;
+    --white:     #ffffff;
+    --gray:      #8899aa;
+    --card-bg:   #131c25;
+    --card-border: rgba(0,229,204,0.18);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ---- SCROLL PROGRESS ---- */
+  #scroll-progress {
+    position: fixed; top:0; left:0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), #0066ff, var(--cyan));
+    background-size: 200% 100%;
+    z-index: 9999; width: 0%;
+    box-shadow: 0 0 10px rgba(0,229,204,0.7);
+    animation: shimmer 2s linear infinite;
+    transition: width 0.1s linear;
+  }
+  @keyframes shimmer { 0%{background-position:0%} 100%{background-position:200%} }
+
+  /* ---- CURSOR GLOW ---- */
+  #cursor-glow {
+    position: fixed; width:300px; height:300px; border-radius:50%;
+    background: radial-gradient(circle, rgba(0,229,204,0.055) 0%, transparent 70%);
+    pointer-events:none; z-index:0;
+    transform:translate(-50%,-50%);
+    transition: left 0.13s ease, top 0.13s ease;
+  }
+
+  /* ---- BACK BUTTON ---- */
+  .back-btn {
+    position: fixed;
+    top: 20px; left: 20px;
+    z-index: 500;
+    display: flex; align-items: center; gap: 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--cyan);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+    backdrop-filter: blur(8px);
+  }
+  .back-btn:hover {
+    background: rgba(0,229,204,0.1);
+    border-color: var(--cyan);
+    transform: translateX(-4px);
+    box-shadow: 0 0 18px rgba(0,229,204,0.2);
+  }
+  .back-btn svg { width:16px; height:16px; flex-shrink:0; }
+
+  /* ---- HERO AREA ---- */
+  .exp-hero {
+    position: relative;
+    min-height: 42vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 80px 80px 60px;
+    overflow: hidden;
+  }
+
+  .exp-hero-grid {
+    position: absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(0,229,204,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,204,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridBreathe 5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes gridBreathe { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .exp-hero-glow {
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(0,229,204,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* floating particles */
+  .exp-particles { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+  .exp-particles span {
+    position: absolute; width:2px; height:2px;
+    background: var(--cyan); border-radius:50%; opacity:0;
+    animation: pdrift var(--dur,9s) var(--delay,0s) ease-in-out infinite;
+  }
+  @keyframes pdrift {
+    0%   { opacity:0; transform:translateY(0) scale(0); }
+    8%   { opacity:0.8; transform:translateY(-15px) scale(1); }
+    90%  { opacity:0.2; }
+    100% { opacity:0; transform:translateY(-200px) scale(0.4); }
+  }
+
+  .exp-hero-content { position:relative; z-index:1; }
+
+  .exp-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--cyan);
+    background: rgba(0,229,204,0.08);
+    border: 1px solid rgba(0,229,204,0.22);
+    border-radius: 20px; padding: 5px 14px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .exp-tag::before { content:'●'; font-size:8px; animation: blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  .exp-hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .exp-hero h1 span { color: var(--cyan); }
+
+  .exp-hero p {
+    font-size: 16px; color: var(--gray);
+    max-width: 520px; line-height: 1.7;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(28px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ---- MAIN CONTENT ---- */
+  .exp-body {
+    padding: 70px 80px 100px;
+    position: relative; z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* ---- TIMELINE ---- */
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 27px; top:0; bottom:0;
+    width: 2px;
+    background: linear-gradient(to bottom,
+      var(--cyan) 0%,
+      rgba(0,229,204,0.4) 60%,
+      transparent 100%);
+  }
+
+  /* ---- CARD ---- */
+  .t-card {
+    display: flex;
+    gap: 0;
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                transform 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+  .t-card.visible { opacity:1; transform:none; }
+  .t-card:nth-child(1) { transition-delay: 0.05s; }
+  .t-card:nth-child(2) { transition-delay: 0.15s; }
+  .t-card:nth-child(3) { transition-delay: 0.25s; }
+
+  .t-dot {
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    border: 2px solid var(--cyan);
+    background: var(--bg2);
+    box-shadow: 0 0 18px rgba(0,229,204,0.28);
+    position: relative; z-index: 2;
+    margin-right: 28px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 4px;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .t-card:hover .t-dot {
+    box-shadow: 0 0 28px rgba(0,229,204,0.55);
+    transform: scale(1.08);
+  }
+
+  .t-content {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.35s ease,
+                border-color 0.3s;
+  }
+  .t-content::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -60%;
+    width: 40%; height: 200%;
+    background: linear-gradient(105deg,transparent 40%,rgba(0,229,204,0.07) 50%,transparent 60%);
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+    pointer-events: none;
+  }
+  .t-card:hover .t-content {
+    transform: translateX(5px);
+    box-shadow: 0 14px 40px rgba(0,229,204,0.1);
+    border-color: rgba(0,229,204,0.38);
+  }
+  .t-card:hover .t-content::before { left: 120%; }
+
+  /* arrow pointer */
+  .t-content::after {
+    content: '';
+    position: absolute;
+    left: -10px; top: 24px;
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 10px solid var(--card-bg);
+    filter: drop-shadow(-2px 0 0 var(--card-border));
+  }
+
+  .t-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--cyan);
+    background: rgba(0,229,204,0.1);
+    border: 1px solid rgba(0,229,204,0.22);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-bottom: 10px;
+  }
+
+  .t-content h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px; font-weight: 700;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .t-num {
+    font-size: 12px; color: var(--cyan);
+    opacity: 0.55; font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+  }
+
+  .t-content p {
+    color: var(--gray);
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+  .t-content p + p { margin-top: 12px; }
+
+  /* ---- HIGHLIGHT QUOTE ---- */
+  .exp-quote {
+    margin: 60px 0 0;
+    padding: 32px 40px;
+    background: rgba(0,229,204,0.04);
+    border: 1px solid rgba(0,229,204,0.18);
+    border-left: 4px solid var(--cyan);
+    border-radius: 0 16px 16px 0;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s 0.3s ease, transform 0.7s 0.3s ease;
+  }
+  .exp-quote.visible { opacity:1; transform:none; }
+  .exp-quote::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 32px;
+    font-size: 80px;
+    font-family: Georgia, serif;
+    color: var(--cyan);
+    opacity: 0.18;
+    line-height: 1;
+  }
+  .exp-quote p {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.8;
+    opacity: 0.88;
+  }
+  .exp-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--cyan);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ---- FOOTER ---- */
+  .exp-footer {
+    text-align: center;
+    padding: 32px 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: #060a0e;
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .exp-footer span { color: var(--cyan); }
+
+  /* ---- REVEAL ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                transform 0.75s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.visible { opacity:1; transform:none; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 768px) {
+    .exp-hero  { padding: 80px 24px 48px; }
+    .exp-body  { padding: 48px 24px 80px; }
+    .t-dot     { width:44px; height:44px; font-size:18px; margin-right:18px; }
+    .t-content { padding:20px 22px; }
+    .timeline::before { left:21px; }
+    .exp-quote { padding:22px 24px; margin-top:40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+<!-- Cursor Glow -->
+<div id="cursor-glow"></div>
+
+<!-- Back Button -->
+<a href="kolaborasi.html" class="back-btn">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path d="M19 12H5M12 5l-7 7 7 7"/>
+  </svg>
+  Back to Portfolio
+</a>
+
+<!-- HERO -->
+<div class="exp-hero">
+  <div class="exp-hero-grid"></div>
+  <div class="exp-hero-glow"></div>
+  <div class="exp-particles" id="expParticles"></div>
+  <div class="exp-hero-content">
+    <div class="exp-tag">Recount Text</div>
+    <h1>Building My<br><span>Portfolio Website</span></h1>
+    <p>A personal account of how I designed and developed my portfolio website as an RPL student — combining creativity, code, and collaboration.</p>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="exp-body">
+
+  <div class="timeline">
+
+    <!-- 01 ORIENTATION -->
+    <div class="t-card">
+      <div class="t-dot">🌱</div>
+      <div class="t-content">
+        <span class="t-badge">Orientation</span>
+        <h3>The Beginning <span class="t-num">— 01</span></h3>
+        <p>Last month, I got a collaboration assignment in my RPL class to create a portfolio website using HTML, CSS, JavaScript, and Figma. The assignment was done individually, but we still collaborated with our classmates.</p>
+      </div>
+    </div>
+
+    <!-- 02 EVENTS -->
+    <div class="t-card">
+      <div class="t-dot">⚡</div>
+      <div class="t-content">
+        <span class="t-badge">Events</span>
+        <h3>The Process <span class="t-num">— 02</span></h3>
+        <p>First, I designed the website layout in Figma. After the design was finished, I started building the website structure using HTML and improved the appearance with CSS. Then, I added some interactive features using JavaScript to make the website more attractive.</p>
+        <p>During the process, I faced several difficulties, such as coding errors and problems with arranging the website layout. However, I discussed and exchanged ideas with my classmates so the problems could be solved. We helped each other even though the assignment was done individually.</p>
+      </div>
+    </div>
+
+    <!-- 03 REORIENTATION -->
+    <div class="t-card">
+      <div class="t-dot">✅</div>
+      <div class="t-content">
+        <span class="t-badge">Reorientation</span>
+        <h3>The Takeaway <span class="t-num">— 03</span></h3>
+        <p>In the end, I successfully completed the portfolio website and presented it in front of the class. From this experience, I learned that collaboration does not always mean working in groups, but it can also be done by helping and sharing ideas with others.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- QUOTE -->
+  <blockquote class="exp-quote">
+    <p>Collaboration does not always mean working in groups — it can also be done by helping and sharing ideas with others.</p>
+    <cite>— Rafa Febrianyah, PPLG Student 2026</cite>
+  </blockquote>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="exp-footer">
+  © 2026 <span>RAFA FEBRIANYAH</span> — PPLG Student Portfolio
+</footer>
+
+<script>
+  /* ---- Scroll progress ---- */
+  const bar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = pct + '%';
+  });
+
+  /* ---- Cursor glow ---- */
+  const glow = document.getElementById('cursor-glow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top  = e.clientY + 'px';
+  });
+
+  /* ---- Particles ---- */
+  const pc = document.getElementById('expParticles');
+  for (let i = 0; i < 24; i++) {
+    const s = document.createElement('span');
+    s.style.cssText = `left:${Math.random()*100}%; top:${50+Math.random()*50}%;
+      --dur:${6+Math.random()*7}s; --delay:${Math.random()*5}s;`;
+    pc.appendChild(s);
+  }
+
+  /* ---- Scroll reveal ---- */
+  const revealAll = document.querySelectorAll('.t-card, .exp-quote, .reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealAll.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

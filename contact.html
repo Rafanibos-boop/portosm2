@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environs - Contact</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; }
+    #topbar {
+      background: #2d6a2d;
+      color: #fff;
+      font-size: 13px;
+      padding: 8px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: padding 0.35s ease, font-size 0.35s ease;
+    }
+    #topbar.scrolled { padding: 5px 40px; font-size: 12px; }
+    .topbar-left { display: flex; gap: 20px; align-items: center; }
+    .topbar-left span { display: flex; align-items: center; gap: 6px; }
+    .topbar-right { display: flex; gap: 14px; align-items: center; }
+    .topbar-right i { font-size: 16px; cursor: pointer; transition: opacity 0.2s; }
+    .topbar-right i:hover { opacity: 0.75; }
+
+    #navbar {
+      background: #fff;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: padding 0.35s ease, box-shadow 0.35s ease;
+    }
+    #navbar.scrolled { padding: 8px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.14); }
+    .brand { font-size: 22px; font-weight: 700; color: #2d6a2d; font-family: Georgia, serif; letter-spacing: 1px; text-decoration: none; }
+    .nav-links { list-style: none; display: flex; gap: 4px; align-items: center; }
+    .nav-links a {
+      padding: 7px 13px; color: #333; text-decoration: none; border-radius: 5px;
+      font-size: 15px; display: flex; align-items: center; gap: 5px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { background: #f0f7f0; color: #2d6a2d; }
+    .dropdown-wrapper { position: relative; }
+    .dropdown-menu {
+      display: none; position: absolute; top: calc(100% + 8px); left: 0;
+      background: #fff; border-radius: 8px; box-shadow: 0 8px 28px rgba(0,0,0,0.14);
+      padding: 6px 0; min-width: 150px; list-style: none; z-index: 1000;
+      animation: dropIn 0.15s ease;
+    }
+    .dropdown-menu.open { display: block; }
+    .dropdown-menu li a { display: block; padding: 9px 18px; color: #333; font-size: 14px; text-decoration: none; transition: background 0.15s; border-radius: 0; }
+    .dropdown-menu li a:hover { background: #f0f7f0; color: #2d6a2d; }
+    @keyframes dropIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .btn-donate { padding: 9px 22px !important; background: #2d6a2d !important; color: #fff !important; border-radius: 6px !important; font-weight: 600 !important; font-size: 14px !important; }
+    .btn-donate:hover { background: #1e4d1e !important; color: #fff !important; }
+
+    .contact-section {
+      background: #d4edbb;
+      padding: 60px 60px 70px;
+    }
+    .contact-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    .contact-form-side h2 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1a3a1a;
+      margin-bottom: 6px;
+      font-family: Georgia, serif;
+    }
+    .contact-form-side p {
+      font-size: 14px;
+      color: #5a7a5a;
+      margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-row.single { grid-template-columns: 1fr; }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #c0d8a0;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus { border-color: #2d6a2d; }
+    .contact-form textarea { resize: vertical; min-height: 140px; }
+
+    .btn-send {
+      width: 100%;
+      padding: 14px;
+      background: #2d6a2d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .btn-send:hover { background: #1e4d1e; }
+
+    .contact-info-side { display: flex; flex-direction: column; gap: 0; }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .info-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 22px 14px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .info-card i {
+      font-size: 28px;
+      color: #2d6a2d;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .info-card h4 { font-size: 14px; font-weight: 700; color: #1a3a1a; margin-bottom: 4px; }
+    .info-card p { font-size: 13px; color: #666; }
+
+    .map-wrapper {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .map-wrapper iframe { display: block; width: 100%; height: 260px; border: none; }
+
+    footer {
+      background: #111;
+      color: #ccc;
+      padding: 60px 60px 40px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+
+    .footer-section h3 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .footer-section p { font-size: 14px; line-height: 1.75; color: #aaa; margin-bottom: 18px; }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #333;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 10px 14px;
+      background: #1e1e1e;
+      border: none;
+      color: #ddd;
+      font-size: 13px;
+      outline: none;
+    }
+    .newsletter-form input::placeholder { color: #666; }
+    .newsletter-form button {
+      padding: 10px 18px;
+      background: #2d6a2d;
+      color: #fff;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover { background: #1e4d1e; }
+
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links li { display: flex; align-items: center; gap: 8px; }
+    .footer-links li::before {
+      content: '';
+      display: inline-block;
+      width: 0; height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid #2d6a2d;
+      flex-shrink: 0;
+    }
+    .footer-links a { color: #aaa; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-links a:hover { color: #2d6a2d; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 5px;
+      filter: brightness(0.85);
+      transition: filter 0.2s;
+    }
+    .gallery-grid img:hover { filter: brightness(1); }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 40px auto 0;
+      border-top: 1px solid #222;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #555;
+    }
+    .footer-bottom a { color: #2d6a2d; text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .info-cards { grid-template-columns: 1fr; }
+      #topbar, #navbar { padding-left: 20px; padding-right: 20px; }
+      .contact-section { padding: 40px 20px; }
+      footer { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="topbar">
+    <div class="topbar-left">
+      <span><i class="ti ti-mail"></i> example@gmail.com</span>
+      <span><i class="ti ti-phone"></i> +0123456789</span>
+    </div>
+    <div class="topbar-right">
+      <i class="ti ti-brand-facebook"></i>
+      <i class="ti ti-brand-twitter"></i>
+      <i class="ti ti-brand-instagram"></i>
+      <i class="ti ti-brand-pinterest"></i>
+      <i class="ti ti-brand-linkedin"></i>
+    </div>
+  </div>
+
+  <nav id="navbar">
+    <a href="#" class="brand">Environs</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="service.html">Services</a></li>
+      <li><a href="causes.html">Causes</a></li>
+      <li><a href="event.html">Events</a></li>
+      <li class="dropdown-wrapper" id="pagesMenu">
+        <a href="#" id="pagesToggle" onclick="toggleDropdown(event)">Pages <i class="ti ti-chevron-down" style="font-size:13px;"></i></a>
+        <ul class="dropdown-menu" id="dropdownMenu">
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="galeri.html">Gallery</a></li>
+          <li><a href="voluntir.html">Volunteer</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="eror.html">404 Error</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#" class="btn-donate">Donate Now</a></li>
+    </ul>
+  </nav>
+
+  <section class="contact-section">
+    <div class="contact-inner">
+      <div class="contact-form-side">
+        <h2>Get in touch</h2>
+        <p>Contact us for any question</p>
+        <form class="contact-form" onsubmit="sendMsg(event)">
+          <div class="form-row">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-row">
+            <input type="text" placeholder="Subject" />
+            <select>
+              <option value="" disabled selected>Donate</option>
+              <option>General Inquiry</option>
+              <option>Volunteer</option>
+              <option>Partnership</option>
+              <option>Donation</option>
+            </select>
+          </div>
+          <div class="form-row single">
+            <textarea placeholder="Message"></textarea>
+          </div>
+          <button type="submit" class="btn-send">Send Message</button>
+        </form>
+      </div>
+      <div class="contact-info-side">
+        <div class="info-cards">
+          <div class="info-card">
+            <i class="ti ti-map-pin"></i>
+            <h4>Address</h4>
+            <p>Indonesia</p>
+          </div>
+          <div class="info-card">
+            <i class="ti ti-mail"></i>
+            <h4>Mail Us</h4>
+            <p>info@email.com</p>
+          </div>
+          <div class="info-card">
+            <i class="ti ti-phone"></i>
+            <h4>Telephone</h4>
+            <p>+62 812 3456</p>
+          </div>
+        </div>
+        <div class="map-wrapper">
+          <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d110.54800!3d-7.41919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjUnMDkuMSJTIDExMMKwMzInNTIuOCJF!5e1!3m2!1sid!2sid!4v1"
+  width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter and stay updated on all our environmental programs and activities.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Type your email..." />
+          <button type="button">Apply</button>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Our Services</h3>
+        <ul class="footer-links">
+          <li><a href="#">Green Turtle</a></li>
+          <li><a href="#">White Tiger</a></li>
+          <li><a href="#">Social Ecology</a></li>
+          <li><a href="#">Livestock</a></li>
+          <li><a href="#">Beauty of Life</a></li>
+          <li><a href="#">Protect for You</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Volunteer</h3>
+        <ul class="footer-links">
+          <li><a href="#">Karen Dawson</a></li>
+          <li><a href="#">Jack Simmons</a></li>
+          <li><a href="#">Michael Linen</a></li>
+          <li><a href="#">Gina Olsen</a></li>
+          <li><a href="#">Millicent Channing</a></li>
+          <li><a href="#">Caroline Suring</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Our Gallery</h3>
+        <div class="gallery-grid">
+          <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=200&q=70" alt="gallery 1" />
+          <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=200&q=70" alt="gallery 2" />
+          <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=200&q=70" alt="gallery 3" />
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=200&q=70" alt="gallery 4" />
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=200&q=70" alt="gallery 5" />
+          <img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=200&q=70" alt="gallery 6" />
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 <a href="#">Environs</a>. All rights reserved. Designed for the environment.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(e) {
+      e.preventDefault();
+      document.getElementById('dropdownMenu').classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      if (!document.getElementById('pagesMenu').contains(e.target)) {
+        document.getElementById('dropdownMenu').classList.remove('open');
+      }
+    });
+    window.addEventListener('scroll', function() {
+      var nb = document.getElementById('navbar');
+      var tb = document.getElementById('topbar');
+      if (window.scrollY > 50) {
+        nb.classList.add('scrolled');
+        tb.classList.add('scrolled');
+      } else {
+        nb.classList.remove('scrolled');
+        tb.classList.remove('scrolled');
+      }
+    });
+
+    function sendMsg(e) {
+      e.preventDefault();
+      alert('Pesan terkirim! Terima kasih telah menghubungi kami.');
+      e.target.reset();
+    }
+  </script>
+
+</body>
+</html>

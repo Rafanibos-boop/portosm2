@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environs - Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="topbar d-flex justify-content-between align-items-center">
+            <div>
+                <i class="bi bi-envelope-fill me-2"></i>info@environment.com
+                <a href="https://wa.me/qr/V6PRBVIOAZMVK1" class="text-white ms-3"><i class="bi bi-whatsapp"></i></a>
+                <i class="me-1"></i>whatsapp
+            </div>
+            <div class="d-none d-md-block">
+                <a href="#" class="text-white ms-3"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/dimas_bruhh/" class="text-white ms-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white ms-3"><i class="bi bi-twitter-x"></i></a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">environment</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="event.html">Event</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Pages
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                                <li><a class="dropdown-item active" href="galeri.html">Gallery</a></li>
+                                <li><a class="dropdown-item" href="voluntir.html">Volunteer</a></li>
+                                <li><a class="dropdown-item" href="donate.html">Donate</a></li>
+                                <li><a class="dropdown-item" href="eror.html">404 Error</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <a href="#" class="btn-donate">Donate Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="page-hero">
+        <div class="page-hero__overlay"></div>
+        <div class="page-hero__content">
+            <h1>Image Gallery</h1>
+            <p>Kami hadir untuk membawa perubahan nyata melalui aksi lingkungan, edukasi masyarakat, dan kolaborasi demi menjaga keseimbangan alam serta keberlanjutan bumi.</p>
+        </div>
+    </section>
+
+<style>
+  :root {
+    --primary-green: #438a70;
+    --dark-green: #2c4a3a;
+    --green: #2d7a4f;
+    --green-light: #3a9e68;
+    --green-dark: #1b5236;
+    --gold: #c9a84c;
+    --cream: #f7f4ef;
+    --dark: #1a1a1a;
+    --gray: #6b7280;
+  }
+  body {
+    font-family: 'Segoe UI', 'DM Sans', sans-serif;
+    margin: 0;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+  .page-hero {
+    position: relative;
+    height: 55vh;
+    min-height: 320px;
+    background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 100px;
+  }
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(27,82,54,0.75) 0%, rgba(44,74,58,0.6) 100%);
+  }
+  .page-hero__content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 0 24px;
+  }
+  .page-hero__content h1 {
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 800;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .page-hero__content p {
+    font-size: 15px;
+    max-width: 580px;
+    margin: 0 auto;
+    opacity: 0.88;
+    line-height: 1.7;
+  }
+  #mainHeader {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 1050;
+    transition: all 0.4s ease-in-out;
+    background: white;
+    border-radius: 8px;
+    overflow: visible;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  #mainHeader .topbar {
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+  }
+  #mainHeader.scrolled {
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+  .topbar {
+    background-color: var(--dark-green);
+    color: white;
+    font-size: 13px;
+    padding: 8px 25px;
+    transition: all 0.3s ease;
+  }
+  #mainHeader.scrolled .topbar {
+    margin-top: -40px;
+    opacity: 0;
+  }
+  .navbar { padding: 15px 25px; background: white !important; }
+  .navbar-brand { color: var(--primary-green) !important; font-weight: 700; font-size: 26px; }
+  .btn-donate { background-color: #5cb874; color: white; border-radius: 4px; padding: 8px 20px; font-weight: 600; text-decoration: none; }
+
+  .dropdown-menu {
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 8px 0;
+    min-width: 160px;
+  }
+  .dropdown-item {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    padding: 9px 20px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .dropdown-item:hover,
+  .dropdown-item:focus,
+  .dropdown-item.active {
+    background-color: var(--primary-green);
+    color: white;
+  }
+  .nav-link.dropdown-toggle::after { margin-left: 5px; }
+
+  .owx__section {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+  text-align: center;
+  font-family: 'Source Sans 3', sans-serif;
+  box-sizing: border-box;
+}
+.owx__section *, .owx__section *::before, .owx__section *::after { box-sizing: border-box; }
+
+.owx__label { display: block !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 3px !important; color: #2e7d32 !important; text-transform: uppercase !important; margin-bottom: 12px !important; text-align: center !important; }
+.owx__heading { font-size: clamp(26px, 4vw, 44px) !important; font-weight: 700 !important; color: #2e7d32 !important; margin: 0 0 16px !important; font-family: 'Source Sans 3', sans-serif !important; text-align: center !important; display: block !important; width: 100% !important; }
+.owx__desc { font-size: 15px !important; color: #555 !important; line-height: 1.7 !important; max-width: 620px !important; margin: 0 auto 44px !important; text-align: center !important; display: block !important; }
+.owx__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 4px;
+}
+
+.owx__item:nth-child(2) { grid-row: 1 / 3; }
+
+.owx__item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.owx__item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.owx__item:hover img { transform: scale(1.07); }
+
+.owx__item .owx__overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.25);
+  transition: background 0.4s;
+}
+.owx__item:hover .owx__overlay { background: rgba(0,0,0,0.48); }
+
+.owx__item .owx__plus {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 48px; height: 48px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff; font-size: 28px; font-weight: 300;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+  z-index: 3; pointer-events: none;
+}
+.owx__item:hover .owx__plus { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+.owx__item .owx__info {
+  position: absolute; bottom: 14px; left: 14px; z-index: 2;
+}
+.owx__item .owx__info strong {
+  display: block; color: #fff; font-size: 15px; font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.owx__item .owx__info span {
+  color: rgba(255,255,255,0.85); font-size: 13px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.9);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 80%; max-height: 80vh; border-radius: 4px; }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+  footer { background: #1a1a1a; color: #bbb; padding: 60px 60px 0; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+  }
+  .footer-col h4 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  .footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 32px; height: 2px;
+    background: var(--green);
+  }
+  .footer-col p { font-size: 13px; line-height: 1.8; color: #999; }
+
+  .newsletter-form { display: flex; gap: 8px; margin-top: 14px; }
+  .newsletter-form input {
+    flex: 1;
+    padding: 9px 14px;
+    border-radius: 4px;
+    border: none;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 13px;
+  }
+  .newsletter-form button {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background .2s;
+  }
+  .newsletter-form button:hover { background: var(--green-dark); }
+
+  .footer-links { list-style: none; padding: 0; margin: 0; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: #999; transition: color .2s; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .footer-links a i { color: var(--green); font-size: 12px; }
+  .footer-links a:hover { color: var(--green); }
+
+  .gallery-mini {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .gallery-mini img { width: 100%; height: 65px; object-fit: cover; border-radius: 3px; }
+
+  .footer-bottom {
+    border-top: 1px solid #2a2a2a;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-bottom p { font-size: 12.5px; color: #666; }
+  .footer-bottom-socials a { color: #666; margin-left: 14px; font-size: 14px; transition: color .2s; }
+  .footer-bottom-socials a:hover { color: var(--green); }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+</style>
+<section class="owx__section">
+  <span class="owx__label">Our Work</span>
+  <h2 class="owx__heading">We consider environment welfare</h2>
+  <p class="owx__desc">Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod amet consectetur adipiscing elit tempor lorem ipsum dolor sit amet consectetur adipiscing tempor.</p>
+
+  <div class="owx__grid">
+
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Natural scenery">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Natural scenery</span></div>
+    </div>
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&q=80" alt="Green environment">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Green environment</span></div>
+    </div>
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=700&q=80" alt="Forest vibes">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Forest vibes</span></div>
+    </div>
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=80" alt="Mountain view">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Mountain view</span></div>
+    </div>
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=700&q=80" alt="Green forest">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Green forest</span></div>
+    </div>
+
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Daftarkan email Anda untuk mendapatkan informasi terbaru tentang program dan kegiatan kami.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your Email Address"/>
+        <button>Sub</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Pelestarian Hutan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Konservasi Satwa</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Edukasi Lingkungan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Daur Ulang</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Energi Terbarukan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Donasi Program</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Volunteer</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Bergabung Relawan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Program Pelatihan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Jadwal Kegiatan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Laporan Tahunan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Tentang Kami</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Gallery</h4>
+      <div class="gallery-mini">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=70" alt=""/>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <a href="#" style="color:var(--green)">Environs</a>. All Rights Reserved. Developed by Rafa</p>
+    <div class="footer-bottom-socials">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter-x"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function () {
+    const header = document.getElementById('mainHeader');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

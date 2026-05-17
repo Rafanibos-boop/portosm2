@@ -1,0 +1,2401 @@
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Environs - Menjaga Kelestarian Alam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #3a7d44;
+      --green-dark: #2e6336;
+      --green-light: #e8f5e9;
+      --accent: #f5a623;
+      --dark: #1a1a1a;
+      --text: #444;
+      --light-bg: #f9f9f7;
+      --white: #ffffff;
+    }
+
+    body { font-family: 'Poppins', sans-serif; color: var(--text); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    #mainHeader {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      z-index: 1050;
+      transition: all 0.4s ease-in-out;
+      background: white;
+      border-radius: 8px;
+      overflow: visible;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    #mainHeader.scrolled {
+      top: 0;
+      width: 100%;
+      border-radius: 0;
+    }
+    #mainHeader .topbar {
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+    }
+    #mainHeader.scrolled .topbar {
+      margin-top: -40px;
+      opacity: 0;
+    }
+    .topbar {
+      background-color: #2c4a3a;
+      color: white;
+      font-size: 13px;
+      padding: 8px 25px;
+      transition: all 0.3s ease;
+    }
+    .topbar a { color: white; text-decoration: none; }
+    .topbar a:hover { color: #a8d5b5; }
+    .navbar { padding: 15px 25px; background: white !important; }
+    .navbar-brand { color: #438a70 !important; font-weight: 700; font-size: 26px; text-decoration: none; }
+    .btn-donate {
+      background-color: #5cb874;
+      color: white;
+      border-radius: 4px;
+      padding: 8px 20px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background .2s;
+    }
+    .btn-donate:hover { background-color: #3a7d44; color: white; }
+    .dropdown-menu {
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      padding: 8px 0;
+      min-width: 160px;
+    }
+    .dropdown-item {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a1a1a;
+      padding: 9px 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown-item:hover, .dropdown-item:focus {
+      background-color: #438a70;
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      height: 520px;
+      margin-top: 110px;
+    }
+    .slides { display: flex; height: 100%; transition: transform .7s ease; }
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+    .slide-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.52);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 40px;
+    }
+    .slide-label {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a8d5b5;
+      margin-bottom: 14px;
+    }
+    .slide-title { font-family: 'Playfair Display', serif; font-size: 48px; line-height: 1.2; margin-bottom: 14px; }
+    .slide-sub { font-size: 15px; opacity: .85; max-width: 540px; margin-bottom: 28px; }
+    .btn-hero {
+      background: var(--green);
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .btn-hero:hover { background: var(--green-dark); }
+    .slide1 { background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1400&q=80'); }
+    .slide2 { background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&q=80'); }
+    .slide3 { background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1400&q=80'); }
+    .carousel-controls {
+      position: absolute;
+      bottom: 22px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 10px;
+    }
+    .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.5);
+      cursor: pointer;
+      transition: background .25s;
+    }
+    .dot.active { background: #fff; }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.2);
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .carousel-arrow:hover { background: rgba(255,255,255,.4); }
+    .arrow-left { left: 20px; }
+    .arrow-right { right: 20px; }
+
+    section { padding: 80px 60px; }
+    .section-label {
+      font-size: 11.5px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center;
+      font-size: 14.5px;
+      color: #888;
+      max-width: 620px;
+      margin: 0 auto 50px;
+      line-height: 1.7;
+    }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.about {
+  padding: 80px 10%;
+  background: #f8f8f8;
+}
+.about-container {
+  max-width: 1100px;    
+  margin: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 30px;
+  flex-wrap: wrap;      
+  padding: 20px;
+}
+.about-left img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+.about-right {
+  max-width: 500px;
+}
+.about-right h5 {
+  color: green;
+  margin-bottom: 10px;
+}
+.about-right h2 {
+  margin-bottom: 15px;
+}
+.about-right p {
+  margin-bottom: 10px;
+}
+.about-card {
+  background: #eaf4ec;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+    .tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.tab-btn {
+  padding: 8px 15px;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.tab-btn.active {
+  background: green;
+  color: white;
+}
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.4s;
+}
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.btn {
+  display: inline-block;
+  background: green;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+    .checklist { margin-bottom: 24px; }
+    .checklist li {
+      font-size: 13.5px;
+      color: #555;
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .checklist li i { color: var(--green); font-size: 13px; }
+    .btn-green {
+      background: var(--green);
+      color: #fff;
+      padding: 11px 28px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-block;
+      transition: background .2s;
+    }
+    .btn-green:hover { background: var(--green-dark); }
+   
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #fff;
+    color: #222;
+  }
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    text-align: center;
+  }
+  .label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #4caf50;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    color: #1a2e1a;
+    line-height: 1.3;
+    max-width: 620px;
+    margin: 0 auto 44px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+
+  .img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/3.5;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
+  .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .img-wrap .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    transition: background 0.4s ease;
+    border-radius: 12px;
+  }
+
+  .img-wrap .plus-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 52px;
+    height: 52px;
+    border: 2.5px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1;
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .img-wrap .card-title {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    z-index: 2;
+    transition: transform 0.4s ease;
+  }
+
+  .img-wrap:hover img {
+    transform: scale(1.1);
+  }
+  .img-wrap:hover .overlay {
+    background: rgba(0,0,0,0.42);
+  }
+  .img-wrap:hover .plus-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .img-wrap:hover .card-title {
+    transform: translateY(3px);
+  }
+
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #444;
+    text-align: left;
+  }
+
+  .btn-wrap {
+    margin-top: 40px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: #4caf50;
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .btn:hover {
+    background: #388e3c;
+    transform: translateY(-2px);
+  }
+
+     .rcx__section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 24px 80px;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    box-sizing: border-box;
+  }
+
+  .rcx__section *,
+  .rcx__section *::before,
+  .rcx__section *::after {
+    box-sizing: border-box;
+  }
+
+  .rcx__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4caf50;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .rcx__heading {
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .rcx__desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.75;
+    max-width: 860px;
+    margin: 0 auto 44px;
+  }
+
+  .rcx__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 1000px) {
+    .rcx__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .rcx__grid { grid-template-columns: 1fr; }
+  }
+
+  .rcx__card {
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rcx__imgwrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .rcx__imgwrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .rcx__card:hover .rcx__imgwrap img {
+    transform: scale(1.05);
+  }
+
+  .rcx__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    z-index: 1;
+  }
+
+  .rcx__badge {
+    position: absolute;
+    top: 14px;
+    right: 0;
+    background: #4caf50;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 7px 16px;
+    border-radius: 4px 0 0 4px;
+    font-family: 'Source Sans 3', sans-serif;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.2s;
+  }
+  .rcx__badge:hover { background: #388e3c; }
+
+  .rcx__meta {
+    position: absolute;
+    bottom: 26px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    z-index: 2;
+  }
+
+  .rcx__meta-item {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .rcx__track {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 7px;
+    background: rgba(255,255,255,0.25);
+    z-index: 3;
+  }
+
+  .rcx__fill {
+    height: 100%;
+    background: #4caf50;
+    width: 0%;
+    transition: width 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+  }
+
+  .rcx__pct {
+    position: absolute;
+    right: 0;
+    top: -22px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Source Sans 3', sans-serif;
+    white-space: nowrap;
+  }
+
+  .rcx__body {
+    background: #2e8b2e;
+    padding: 20px 18px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rcx__title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .rcx__text {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-family: 'Source Sans 3', sans-serif;
+    flex: 1;
+  }
+
+  .rcx__readbtn {
+    display: inline-block;
+    background: #fff;
+    color: #222;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 4px;
+    border: 1.5px solid #ddd;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: background 0.2s;
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  .rcx__readbtn:hover { background: #f0f0f0; }
+    .donation-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px 70px;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    color: #222;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  .donation-section *,
+  .donation-section *::before,
+  .donation-section *::after {
+    box-sizing: border-box;
+  }
+
+  .donation-section .ds-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4caf50;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .donation-section .ds-heading {
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 40px;
+    line-height: 1.2;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .donation-section .ds-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .donation-section .ds-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .donation-section .ds-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 440px;
+    cursor: pointer;
+  }
+
+  .donation-section .ds-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .donation-section .ds-card:hover img {
+    transform: scale(1.06);
+  }
+
+  .donation-section .ds-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.45) 45%,
+      rgba(0,0,0,0.15) 100%
+    );
+    transition: background 0.4s ease;
+    z-index: 1;
+  }
+
+  .donation-section .ds-card:hover .ds-gradient {
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.92) 0%,
+      rgba(0,0,0,0.55) 55%,
+      rgba(0,0,0,0.2) 100%
+    );
+  }
+
+  .donation-section .ds-card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 24px;
+    z-index: 2;
+    transform: translateY(0px);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-align: left;
+  }
+
+  .donation-section .ds-card:hover .ds-card-body {
+    transform: translateY(-18px);
+  }
+
+  .donation-section .ds-card-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #4caf50;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .donation-section .ds-card-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .donation-section .ds-card-subtitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .donation-section .ds-card-desc {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: max-height 0.5s ease, opacity 0.4s ease 0.1s, margin-bottom 0.4s ease;
+  }
+
+  .donation-section .ds-card:hover .ds-card-desc {
+    max-height: 80px;
+    opacity: 1;
+    margin-bottom: 16px;
+  }
+
+  .donation-section .ds-btn-donate {
+    display: inline-block;
+    background: #4caf50;
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s, background 0.25s;
+  }
+
+  .donation-section .ds-card:hover .ds-btn-donate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .donation-section .ds-btn-donate:hover {
+    background: #388e3c;
+  }
+
+  .donation-section .ds-btn-wrap {
+    text-align: center;
+  }
+
+  .donation-section .ds-btn-readmore {
+    display: inline-block;
+    background: #4caf50;
+    color: #fff;
+    padding: 14px 38px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  .donation-section .ds-btn-readmore:hover {
+    background: #388e3c;
+    transform: translateY(-2px);
+  }
+
+  .achievements-section {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .achievements-section *,
+  .achievements-section *::before,
+  .achievements-section *::after {
+    box-sizing: border-box;
+  }
+
+  .achievements-section .ach-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.45);
+    z-index: 0;
+  }
+
+  .achievements-section .ach-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .achievements-section .ach-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4caf50;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  .achievements-section .ach-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    max-width: 780px;
+    margin: 0 auto 50px;
+  }
+
+  .achievements-section .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 900px) {
+    .achievements-section .ach-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .achievements-section .ach-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .achievements-section .ach-card {
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 36px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .achievements-section .ach-icon {
+    font-size: 32px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .achievements-section .ach-stat-label {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .achievements-section .ach-number-box {
+    border: 1.5px dashed rgba(255,255,255,0.5);
+    padding: 8px 22px;
+    margin-top: 4px;
+  }
+
+  .achievements-section .ach-number {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4caf50;
+    letter-spacing: 1px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .achievements-section .ach-btn {
+    display: inline-block;
+    background: #4caf50;
+    color: #fff;
+    padding: 14px 40px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  .achievements-section .ach-btn:hover {
+    background: #388e3c;
+    transform: translateY(-2px);
+  }
+    .program-section { background: var(--light-bg); }
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .program-card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      position: relative;
+    }
+    .program-card .prog-tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--green);
+      color: #fff;
+      font-size: 10px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .program-card img { width: 100%; height: 150px; object-fit: cover; }
+    .program-body { padding: 16px; }
+    .program-body h4 { font-size: 13.5px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .program-body p { font-size: 12px; color: #888; line-height: 1.6; margin-bottom: 14px; }
+    .btn-read {
+      background: var(--green);
+      color: #fff;
+      padding: 7px 18px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+      transition: background .2s;
+    }
+    .btn-read:hover { background: var(--green-dark); }
+
+     .uev__section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+    font-family: 'Source Sans 3', sans-serif;
+    box-sizing: border-box;
+  }
+
+  .uev__section *,
+  .uev__section *::before,
+  .uev__section *::after {
+    box-sizing: border-box;
+  }
+
+  .uev__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4caf50;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .uev__heading {
+    font-size: clamp(20px, 3vw, 34px);
+    font-weight: 800;
+    color: #111;
+    line-height: 1.25;
+    font-family: 'Source Sans 3', sans-serif;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .uev__header {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  .uev__navrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .uev__navbtn {
+    width: 46px;
+    height: 46px;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+    font-family: sans-serif;
+  }
+
+  .uev__navbtn:hover {
+    background: #388e3c;
+    transform: scale(1.05);
+  }
+
+  .uev__slider-outer {
+    overflow: hidden;
+    flex: 1;
+    margin: 0 16px;
+  }
+
+  .uev__slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .uev__card {
+    flex: 0 0 calc((100% - 40px) / 3);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+  }
+
+  @media (max-width: 900px) {
+    .uev__card { flex: 0 0 calc((100% - 20px) / 2); }
+  }
+  @media (max-width: 560px) {
+    .uev__card { flex: 0 0 100%; }
+  }
+
+  .uev__imgwrap {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .uev__imgwrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .uev__card:hover .uev__imgwrap img {
+    transform: scale(1.09);
+  }
+
+  .uev__body {
+    background: #2e8b2e;
+    padding: 18px 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .uev__meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .uev__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .uev__meta-item svg {
+    flex-shrink: 0;
+  }
+
+  .uev__card-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .uev__card-text {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .uev__readbtn {
+    display: inline-block;
+    background: #fff;
+    color: #222;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 22px;
+    border-radius: 4px;
+    border: 1.5px solid #ddd;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: background 0.2s;
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  .uev__readbtn:hover { background: #f0f0f0; }
+    .news-section { background: var(--light-bg); }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .news-card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+    .news-card img { width: 100%; height: 160px; object-fit: cover; }
+    .news-body { padding: 16px; }
+    .news-cat {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .news-date { font-size: 11px; color: #bbb; margin-bottom: 8px; }
+    .news-body h4 { font-size: 13.5px; font-weight: 700; color: var(--dark); margin-bottom: 8px; line-height: 1.4; }
+    .news-body p { font-size: 12px; color: #888; line-height: 1.6; margin-bottom: 14px; }
+
+    .owx__section {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+  text-align: center;
+  font-family: 'Source Sans 3', sans-serif;
+  box-sizing: border-box;
+}
+.owx__section *, .owx__section *::before, .owx__section *::after { box-sizing: border-box; }
+
+.owx__label { display: block !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 3px !important; color: #2e7d32 !important; text-transform: uppercase !important; margin-bottom: 12px !important; text-align: center !important; }
+.owx__heading { font-size: clamp(26px, 4vw, 44px) !important; font-weight: 700 !important; color: #2e7d32 !important; margin: 0 auto 16px !important; font-family: 'Source Sans 3', sans-serif !important; text-align: center !important; display: block !important; width: 100% !important; }
+.owx__desc { font-size: 15px !important; color: #555 !important; line-height: 1.7 !important; max-width: 620px !important; margin: 0 auto 44px !important; text-align: center !important; display: block !important; }
+
+.owx__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 4px;
+}
+
+.owx__item:nth-child(2) { grid-row: 1 / 3; }
+
+.owx__item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.owx__item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.owx__item:hover img { transform: scale(1.07); }
+
+.owx__item .owx__overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.25);
+  transition: background 0.4s;
+}
+.owx__item:hover .owx__overlay { background: rgba(0,0,0,0.48); }
+
+.owx__item .owx__plus {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 48px; height: 48px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff; font-size: 28px; font-weight: 300;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+  z-index: 3; pointer-events: none;
+}
+.owx__item:hover .owx__plus { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+.owx__item .owx__info {
+  position: absolute; bottom: 14px; left: 14px; z-index: 2;
+}
+.owx__item .owx__info strong {
+  display: block; color: #fff; font-size: 15px; font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.owx__item .owx__info span {
+  color: rgba(255,255,255,0.85); font-size: 13px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.9);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 80%; max-height: 80vh; border-radius: 4px; }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .volunteer-section { background: var(--green-light); }
+    .volunteer-inner {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .volunteer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 160px);
+      gap: 14px;
+    }
+    .vol-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 160px;
+    }
+    .vol-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vol-overlay {
+      position: absolute; inset: 0;
+      background: rgba(58,125,68,.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .vol-card:hover .vol-overlay { opacity: 1; }
+    .vol-overlay h5 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+    .vol-overlay p { font-size: 11px; opacity: .85; margin-bottom: 10px; }
+    .vol-socials a { color: #fff; margin: 0 4px; font-size: 14px; }
+    .volunteer-text { flex: 1; }
+    .volunteer-text .section-label,
+    .volunteer-text .section-title { text-align: left; }
+    .volunteer-text .section-title { font-size: 28px; }
+    .volunteer-text p { font-size: 14px; color: #666; line-height: 1.8; margin-bottom: 18px; }
+    .vol-check li {
+      font-size: 13.5px;
+      color: #555;
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .vol-check li i { color: var(--green); }
+    .vol-check { margin-bottom: 26px; }
+
+    footer { background: #1a1a1a; color: #bbb; padding: 60px 60px 0; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 32px; height: 2px;
+      background: var(--green);
+    }
+    .footer-col p { font-size: 13px; line-height: 1.8; color: #999; }
+    .newsletter-form { display: flex; gap: 8px; margin-top: 14px; }
+    .newsletter-form input {
+      flex: 1;
+      padding: 9px 14px;
+      border-radius: 4px;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .newsletter-form button {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .newsletter-form button:hover { background: var(--green-dark); }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: #999; transition: color .2s; display: flex; align-items: center; gap: 8px; }
+    .footer-links a i { color: var(--green); font-size: 11px; }
+    .footer-links a:hover { color: var(--green); }
+    .gallery-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .gallery-mini img { width: 100%; height: 65px; object-fit: cover; border-radius: 3px; }
+    .footer-contact li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: #999;
+      align-items: flex-start;
+    }
+    .footer-contact li i { color: var(--green); margin-top: 3px; }
+    .footer-bottom {
+      border-top: 1px solid #2a2a2a;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-bottom p { font-size: 12.5px; color: #666; }
+    .footer-bottom-socials a { color: #666; margin-left: 14px; font-size: 14px; transition: color .2s; }
+    .footer-bottom-socials a:hover { color: var(--green); }
+
+    @media (max-width: 900px) {
+      .cards-grid, .program-grid, .events-grid, .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-inner, .volunteer-inner { flex-direction: column; }
+      .about-img { flex: none; width: 100%; }
+      .counter-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header id="mainHeader">
+  <div class="topbar d-flex justify-content-between align-items-center">
+    <div>
+      <i class="bi bi-envelope-fill me-2"></i>example@gmail.com
+      <a href="https://wa.me/" class="ms-3"><i class="bi bi-whatsapp"></i></a>
+      <i class="me-1"></i>whatsapp
+    </div>
+    <div class="d-none d-md-block">
+      <a href="#" class="ms-3"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="ms-3"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="ms-3"><i class="bi bi-twitter-x"></i></a>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">environment</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a></li>
+          <li class="nav-item"><a class="nav-link" href="event.html">Event</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Pages
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+              <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+              <li><a class="dropdown-item" href="galeri.html">Gallery</a></li>
+              <li><a class="dropdown-item" href="voluntir.html">Volunteer</a></li>
+              <li><a class="dropdown-item" href="donate.html">Donate</a></li>
+              <li><a class="dropdown-item" href="eror.html">404 Error</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="donate.html" class="btn-donate ms-3">Donate Now</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="slides" id="slider">
+    <div class="slide slide1">
+      <div class="slide-overlay">
+        <div class="slide-label">Warisan Masa Depan</div>
+        <h1 class="slide-title">Edukasi Untuk<br>Perubahan</h1>
+        <p class="slide-sub">Membangun kesadaran lingkungan sejak dini melalui workshop dan forum ilmiah. Jadilah contoh bagi para calon pejuang bumi.</p>
+        <a href="#" class="btn-hero">Daftar Relawan Pelajar</a>
+      </div>
+    </div>
+    <div class="slide slide2">
+      <div class="slide-overlay">
+        <div class="slide-label">Bersama Lebih Kuat</div>
+        <h1 class="slide-title">Jaga Hutan<br>Kita Bersama</h1>
+        <p class="slide-sub">Bergabunglah dengan ribuan relawan yang berdedikasi untuk menjaga kelestarian hutan dan ekosistem alam.</p>
+        <a href="#" class="btn-hero">Bergabung Sekarang</a>
+      </div>
+    </div>
+    <div class="slide slide3">
+      <div class="slide-overlay">
+        <div class="slide-label">Aksi Nyata</div>
+        <h1 class="slide-title">Bumi Sehat<br>Generasi Kuat</h1>
+        <p class="slide-sub">Setiap donasi Anda membantu program pelestarian lingkungan dan pemberdayaan komunitas lokal.</p>
+        <a href="#" class="btn-hero">Donasi Sekarang</a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-arrow arrow-left" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="carousel-arrow arrow-right" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+  <div class="carousel-controls" id="dots">
+    <div class="dot active" onclick="goToSlide(0)"></div>
+    <div class="dot" onclick="goToSlide(1)"></div>
+    <div class="dot" onclick="goToSlide(2)"></div>
+  </div>
+</div>
+
+<section class="about">
+  <div class="about-container">
+    <div class="about-left">
+      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
+    </div>
+    <div class="about-right">
+
+      <h5>ABOUT US</h5>
+      <h2>Tujuan Kami Adalah Menjaga Kelestarian Alam</h2>
+      <p>
+        Kami adalah organisasi yang berdedikasi untuk memulihkan ekosistem
+        dan mengedukasi masyarakat tentang pentingnya keberlanjutan.
+      </p>
+      <div class="about-card">
+
+        <div class="tabs">
+          <button class="tab-btn active" onclick="openTab(event,'about')">About</button>
+          <button class="tab-btn" onclick="openTab(event,'mission')">Mission</button>
+          <button class="tab-btn" onclick="openTab(event,'vision')">Vision</button>
+        </div>
+
+        <div class="tab-content active" id="about">
+          <h2>Tentang Kami</h2>
+          <p>Mengurangi dampak pemanasan global melalui aksi nyata dan kampanye lingkungan.</p>
+        </div>
+
+        <div class="tab-content" id="mission">
+           <h2>Tentang Kami</h2>
+          <p>Misi kami adalah menjaga keseimbangan alam secara berkelanjutan.</p>
+        </div>
+
+        <div class="tab-content" id="vision">
+           <h2>Tentang Kami</h2>
+          <p>Visi kami adalah menciptakan dunia yang lebih hijau.</p>
+        </div>
+
+        <a href="#" class="btn">Read More</a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+function openTab(evt, tabId) {
+  document.querySelectorAll(".tab-content").forEach(el => {
+    el.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
+
+
+<section class="section">
+  <p class="label">What We Do</p>
+  <h2>Kontribusi Nyata Kami Untuk Menjaga Kelestarian Lingkungan</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Penggalangan Dana">
+        <div class="overlay"></div>
+        <div class="plus-icon">+</div>
+        <div class="card-title">Penggalangan Dana</div>
+      </div>
+      <p class="card-desc">Mengumpulkan dukungan finansial secara transparan untuk membiayai proyek penghijauan dan pemulihan lahan kritis di berbagai wilayah.</p>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600&q=80" alt="Kemitraan Strategis">
+        <div class="overlay"></div>
+        <div class="plus-icon">+</div>
+        <div class="card-title">Kemitraan Strategis</div>
+      </div>
+      <p class="card-desc">Bekerja sama erat dengan pemerintah dan sektor swasta untuk menyediakan layanan konsultasi lingkungan yang berkelanjutan.</p>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=80" alt="Ekowisata">
+        <div class="overlay"></div>
+        <div class="plus-icon">+</div>
+        <div class="card-title">Ekowisata</div>
+      </div>
+      <p class="card-desc"> Menyediakan tur edukasi alam yang dipandu oleh ahli profesional untuk meningkatkan kesadaran masyarakat tentang ekosistem hutan.</p>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Konservasi Satwa">
+        <div class="overlay"></div>
+        <div class="plus-icon">+</div>
+        <div class="card-title">Konservasi Satwa</div>
+      </div>
+      <p class="card-desc"> Melindungi habitat asli hewan liar dari perburuan dan kerusakan lahan guna menjaga rantai makanan serta keanekaragaman hayati.</p>
+    </div>
+
+  </div>
+
+  <div class="btn-wrap">
+    <button class="btn">Read More</button>
+  </div>
+</section>
+
+<section class="donation-section">
+
+  <p class="ds-label">Donation</p>
+  <h2 class="ds-heading">Uang Anda akan menyelamatkan hidup kami.</h2>
+
+  <div class="ds-cards">
+    <div class="ds-card">
+      <img src="c:\Users\Hype AMD\Downloads\organik.webp">
+      <div class="ds-gradient"></div>
+      <div class="ds-card-body">
+        <span class="ds-card-tag">Organik</span>
+        <div class="ds-card-title">Bantu Kami Lebih Banyak</div>
+        <div class="ds-card-subtitle">Melindungi Lingkungan</div>
+        <p class="ds-card-desc">Melindungi lingkungan adalah tanggung jawab kita bersama.</p>
+        <button class="ds-btn-donate">Donasi Sekarang</button>
+      </div>
+    </div>
+    <div class="ds-card">
+      <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=700&q=80" alt="Ekosistem">
+      <div class="ds-gradient"></div>
+      <div class="ds-card-body">
+        <span class="ds-card-tag">Ekosistem</span>
+        <div class="ds-card-title">Bantu Kami Lebih Banyak</div>
+        <div class="ds-card-subtitle">Melindungi Lingkungan</div>
+        <p class="ds-card-desc">Melindungi lingkungan adalah tanggung jawab kita bersama.</p>
+        <button class="ds-btn-donate">Donasi Sekarang</button>
+      </div>
+    </div>
+    <div class="ds-card">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=80" alt="Recycling">
+      <div class="ds-gradient"></div>
+      <div class="ds-card-body">
+        <span class="ds-card-tag">Recycling</span>
+        <div class="ds-card-title">Bantu Kami Lebih Banyak</div>
+        <div class="ds-card-subtitle">Melindungi Lingkungan</div>
+        <p class="ds-card-desc">Melindungi lingkungan adalah tanggung jawab kita bersama.</p>
+        <button class="ds-btn-donate">Donasi Sekarang</button>
+      </div>
+    </div>
+  </div>
+  <div class="ds-btn-wrap">
+    <button class="ds-btn-readmore">Read More</button>
+  </div>
+
+</section>
+
+<button id="ds-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<section class="achievements-section">
+  <div class="ach-bg"></div>
+  <div class="ach-inner">
+
+    <span class="ach-label">Achievements</span>
+    <p class="ach-desc">
+      Berhasil berkontribusi dalam berbagai kegiatan pelestarian lingkungan, pengolahan sampah berbasis 3R,
+      serta kampanye kesadaran lingkungan yang melibatkan masyarakat sekitar, sebagai bentuk nyata
+      kepedulian terhadap keberlanjutan alam.
+    </p>
+
+    <div class="ach-grid">
+
+      <div class="ach-card">
+        <div class="ach-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 24 24">
+            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/>
+          </svg>
+        </div>
+        <div class="ach-stat-label">Beavers Saved</div>
+        <div class="ach-number-box">
+          <span class="ach-number" data-target="1600" data-suffix="+">0+</span>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 24 24">
+            <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm0-4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/>
+          </svg>
+        </div>
+        <div class="ach-stat-label">Funds Collected</div>
+        <div class="ach-number-box">
+          <span class="ach-number" data-target="543" data-suffix="$">0$</span>
+        </div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 24 24">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+        </div>
+        <div class="ach-stat-label">Volunteer</div>
+        <div class="ach-number-box">
+          <span class="ach-number" data-target="713" data-suffix="+">0+</span>
+        </div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+        <div class="ach-stat-label">Days of Help</div>
+        <div class="ach-number-box">
+          <span class="ach-number" data-target="487" data-suffix="+">0+</span>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="ach-btn">Join With Us</button>
+
+  </div>
+</section>
+
+<script>
+  function animateCountUp(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 2000; // ms
+    const frameRate = 60;
+    const totalFrames = Math.round(duration / (1000 / frameRate));
+    let frame = 0;
+
+    function easeOutQuart(t) {
+      return 1 - Math.pow(1 - t, 4);
+    }
+
+    const counter = setInterval(() => {
+      frame++;
+      const progress = easeOutQuart(frame / totalFrames);
+      const current = Math.round(progress * target);
+      el.textContent = current + suffix;
+
+      if (frame >= totalFrames) {
+        el.textContent = target + suffix;
+        clearInterval(counter);
+      }
+    }, 1000 / frameRate);
+  }
+  const section = document.querySelector('.achievements-section');
+  let animated = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        const numbers = document.querySelectorAll('.ach-number');
+        numbers.forEach((el, i) => {
+          setTimeout(() => animateCountUp(el), i * 150);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(section);
+</script>
+<section class="rcx__section">
+
+  <span class="rcx__label">Recent Causes</span>
+  <h2 class="rcx__heading">Lingkungan Membutuhkan Perlindungan Kita</h2>
+  <p class="rcx__desc">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis eum perferendis sint et eos!
+    Voluptates mollitia aliquid quam modi veritatis. Obcaecati ipsam, repellat beatae vel
+    necessitatibus voluptate facere exercitationem porro!
+  </p>
+
+  <div class="rcx__grid">
+    <div class="rcx__card">
+      <div class="rcx__imgwrap">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" alt="Kegiatan Lingkungan">
+        <div class="rcx__overlay"></div>
+        <span class="rcx__badge">Donate Now</span>
+        <div class="rcx__meta">
+          <span class="rcx__meta-item">&#9873; Goal: $3000</span>
+          <span class="rcx__meta-item">&#128176; Raised: $1000</span>
+        </div>
+        <div class="rcx__track">
+          <div class="rcx__fill" data-rcx-target="47">
+            <span class="rcx__pct">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcx__body">
+        <div class="rcx__title">Pertama Kegiatan Lingkungan</div>
+        <p class="rcx__text">Menjaga lingkungan dari pencemaran akibat ulah manusia itu sendiri.</p>
+        <button class="rcx__readbtn">Read More</button>
+      </div>
+    </div>
+    <div class="rcx__card">
+      <div class="rcx__imgwrap">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Bangun Sekolah">
+        <div class="rcx__overlay"></div>
+        <span class="rcx__badge">Donate Now</span>
+        <div class="rcx__meta">
+          <span class="rcx__meta-item">&#9873; Goal: $5000</span>
+          <span class="rcx__meta-item">&#128176; Raised: $3000</span>
+        </div>
+        <div class="rcx__track">
+          <div class="rcx__fill" data-rcx-target="60">
+            <span class="rcx__pct">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcx__body">
+        <div class="rcx__title">Bangun Sekolah untuk anak-anak miskin</div>
+        <p class="rcx__text">Pendidikan untuk yang layak untuk anak kurang mampu.</p>
+        <button class="rcx__readbtn">Read More</button>
+      </div>
+    </div>
+    <div class="rcx__card">
+      <div class="rcx__imgwrap">
+        <img src="https://images.unsplash.com/photo-1581922814484-0b48460b7010?w=600&q=80" alt="Air Bersih">
+        <div class="rcx__overlay"></div>
+        <span class="rcx__badge">Donate Now</span>
+        <div class="rcx__meta">
+          <span class="rcx__meta-item">&#9873; Goal: $3000</span>
+          <span class="rcx__meta-item">&#128176; Raised: $2000</span>
+        </div>
+        <div class="rcx__track">
+          <div class="rcx__fill" data-rcx-target="70">
+            <span class="rcx__pct">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcx__body">
+        <div class="rcx__title">Bangun sistem Air Bersih untuk orang miskin</div>
+        <p class="rcx__text">Mari kita bangun akses air bersih bagi mereka yang membutuhkan!</p>
+        <button class="rcx__readbtn">Read More</button>
+      </div>
+    </div>
+    <div class="rcx__card">
+      <div class="rcx__imgwrap">
+        <img src="https://images.unsplash.com/photo-1569163139599-0f4517e36f51?w=600&q=80" alt="Kegiatan Lingkungan">
+        <div class="rcx__overlay"></div>
+        <span class="rcx__badge">Donate Now</span>
+        <div class="rcx__meta">
+          <span class="rcx__meta-item">&#9873; Goal: $1000</span>
+          <span class="rcx__meta-item">&#128176; Raised: $500</span>
+        </div>
+        <div class="rcx__track">
+          <div class="rcx__fill" data-rcx-target="50">
+            <span class="rcx__pct">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcx__body">
+        <div class="rcx__title">Kegiatan Lingkungan Pertama</div>
+        <p class="rcx__text">Menjaga bumi tetap hijau agar kita dapat memberikannya pada anak cucu kita kelak.</p>
+        <button class="rcx__readbtn">Read More</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var rcxAnimated = false;
+
+    function rcxAnimate() {
+      var fills = document.querySelectorAll('.rcx__fill[data-rcx-target]');
+      fills.forEach(function (fill, i) {
+        var target = parseInt(fill.getAttribute('data-rcx-target'));
+        var pct = fill.querySelector('.rcx__pct');
+        var duration = 1800;
+        var fps = 60;
+        var totalFrames = Math.round(duration / (1000 / fps));
+        var frame = 0;
+
+        setTimeout(function () {
+          var timer = setInterval(function () {
+            frame++;
+            var ease = 1 - Math.pow(1 - frame / totalFrames, 4);
+            var current = Math.round(ease * target);
+            fill.style.width = current + '%';
+            if (pct) pct.textContent = current + '%';
+            if (frame >= totalFrames) {
+              fill.style.width = target + '%';
+              if (pct) pct.textContent = target + '%';
+              clearInterval(timer);
+            }
+          }, 1000 / fps);
+        }, i * 200);
+      });
+    }
+
+    var section = document.querySelector('.rcx__section');
+    if (!section) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !rcxAnimated) {
+          rcxAnimated = true;
+          rcxAnimate();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    obs.observe(section);
+  })();
+</script>
+
+<section class="uev__section">
+
+  <div class="uev__header">
+    <span class="uev__label">Upcoming Events</span>
+    <h2 class="uev__heading">Bantulah hari ini karena besok mungkin Anda membutuhkan lebih banyak bantuan!</h2>
+  </div>
+
+  <div class="uev__navrow">
+    <button class="uev__navbtn" id="uevPrev" aria-label="Previous">&#8249;</button>
+
+    <!-- Slider -->
+    <div class="uev__slider-outer">
+      <div class="uev__slider-track" id="uevTrack">
+
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=700&q=80" alt="Event Sosial">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Jakarta
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                12 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Event Sosial</div>
+            <p class="uev__card-text">Membantu masyarakat sekitar...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Lingkungan">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Bandung
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                15 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Lingkungan</div>
+            <p class="uev__card-text">Program kebersihan kota...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1569163139599-0f4517e36f51?w=700&q=80" alt="Relawan">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Surabaya
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                18 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Relawan</div>
+            <p class="uev__card-text">Gabung jadi relawan...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=700&q=80" alt="Daur Ulang">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Yogyakarta
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                22 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Daur Ulang Sampah</div>
+            <p class="uev__card-text">Workshop pengolahan sampah kreatif...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1542601906897-d3b169391657?w=700&q=80" alt="Tanam Pohon">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Medan
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                28 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Tanam Pohon</div>
+            <p class="uev__card-text">Gerakan menanam 1000 pohon bersama...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="uev__navbtn" id="uevNext" aria-label="Next">&#8250;</button>
+  </div>
+</section>
+<script>
+  (function () {
+    var track = document.getElementById('uevTrack');
+    var prevBtn = document.getElementById('uevPrev');
+    var nextBtn = document.getElementById('uevNext');
+    var currentIndex = 0;
+
+    function uevGetVisible() {
+      var w = track.parentElement.offsetWidth;
+      if (w < 560) return 1;
+      if (w < 900) return 2;
+      return 3;
+    }
+
+    function uevTotalCards() {
+      return track.querySelectorAll('.uev__card').length;
+    }
+
+    function uevGetCardWidth() {
+      var visible = uevGetVisible();
+      var gap = 20;
+      var outerW = track.parentElement.offsetWidth;
+      return (outerW - gap * (visible - 1)) / visible + gap;
+    }
+
+    function uevSlide() {
+      var offset = currentIndex * uevGetCardWidth();
+      track.style.transform = 'translateX(-' + offset + 'px)';
+    }
+
+    function uevMaxIndex() {
+      return Math.max(0, uevTotalCards() - uevGetVisible());
+    }
+
+    nextBtn.addEventListener('click', function () {
+      currentIndex = currentIndex >= uevMaxIndex() ? 0 : currentIndex + 1;
+      uevSlide();
+    });
+
+    prevBtn.addEventListener('click', function () {
+      currentIndex = currentIndex <= 0 ? uevMaxIndex() : currentIndex - 1;
+      uevSlide();
+    });
+
+    window.addEventListener('resize', function () {
+      currentIndex = Math.min(currentIndex, uevMaxIndex());
+      uevSlide();
+    });
+  })();
+  </script>
+
+<section class="news-section">
+  <div class="section-label">Latest News & Blog</div>
+  <h2 class="section-title">Help today because tomorrow you may be the one who needs more helping!</h2>
+  <p class="section-sub">Ikuti berita terkini seputar lingkungan dan kegiatan kami di seluruh Indonesia.</p>
+  <div class="news-grid">
+    <div class="news-card">
+      <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=400&q=80" alt=""/>
+      <div class="news-body">
+        <div class="news-cat">Environment</div>
+        <div class="news-date">Feb 24, 2025</div>
+        <h4>Save The Topic Forests</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</p>
+        <a href="#" class="btn-read">Read More</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=80" alt=""/>
+      <div class="news-body">
+        <div class="news-cat">Wildlife</div>
+        <div class="news-date">Mar 11, 2025</div>
+        <h4>Save The Topic Forests</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</p>
+        <a href="#" class="btn-read">Read More</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt=""/>
+      <div class="news-body">
+        <div class="news-cat">Climate</div>
+        <div class="news-date">Apr 02, 2025</div>
+        <h4>Save The Topic Forests</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</p>
+        <a href="#" class="btn-read">Read More</a>
+      </div>
+    </div>
+    <div class="news-card">
+      <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&q=80" alt=""/>
+      <div class="news-body">
+        <div class="news-cat">Nature</div>
+        <div class="news-date">Apr 17, 2025</div>
+        <h4>Save The Topic Forests</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</p>
+        <a href="#" class="btn-read">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="owx__section">
+  <span class="owx__label">Our Work</span>
+  <h2 class="owx__heading">We consider environment welfare</h2>
+  <p class="owx__desc">Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod amet consectetur adipiscing elit tempor lorem ipsum dolor sit amet consectetur adipiscing tempor.</p>
+
+  <div class="owx__grid">
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Natural scenery">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Natural scenery</span></div>
+    </div>
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&q=80" alt="Green environment">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Green environment</span></div>
+    </div>
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=700&q=80" alt="Forest vibes">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Forest vibes</span></div>
+    </div>
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=80" alt="Mountain view">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Mountain view</span></div>
+    </div>
+    <div class="owx__item">
+      <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=700&q=80" alt="Green forest">
+      <div class="owx__overlay"></div>
+      <div class="owx__plus">+</div>
+      <div class="owx__info"><strong>Beauty of Life</strong><span>Green forest</span></div>
+    </div>
+
+  </div>
+</section>
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close"><i class="fas fa-times"></i></span>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+<section class="volunteer-section">
+  <div class="volunteer-inner">
+    <div class="volunteer-grid">
+      <div class="vol-card">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&q=80" alt=""/>
+        <div class="vol-overlay">
+          <h5>Sarah Diana</h5>
+          <p>Ketua Relawan</p>
+          <div class="vol-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="vol-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&q=80" alt=""/>
+        <div class="vol-overlay">
+          <h5>Budi Santoso</h5>
+          <p>Koordinator</p>
+          <div class="vol-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="vol-card">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b04c?w=300&q=80" alt=""/>
+        <div class="vol-overlay">
+          <h5>Rina Wati</h5>
+          <p>Sekretaris</p>
+          <div class="vol-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="vol-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80" alt=""/>
+        <div class="vol-overlay">
+          <h5>Hendra Putra</h5>
+          <p>Bendahara</p>
+          <div class="vol-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="volunteer-text">
+      <div class="section-label">Become A Volunteer</div>
+      <h2 class="section-title">Kami Peduli terhadap Kesejahteraan Lingkungan</h2>
+      <p>Kami mengundang Anda untuk bergabung sebagai relawan dan berkontribusi langsung dalam program-program pelestarian lingkungan kami di seluruh Indonesia.</p>
+      <ul class="vol-check">
+        <li><i class="fas fa-check-circle"></i> Anda tidak perlu pengalaman khusus untuk mulai berkontribusi</li>
+        <li><i class="fas fa-check-circle"></i> Kami menyediakan pelatihan dan dukungan penuh bagi relawan baru</li>
+        <li><i class="fas fa-check-circle"></i> Setiap kontribusi Anda, sekecil apapun, membuat perbedaan nyata</li>
+        <li><i class="fas fa-check-circle"></i> Bergabunglah dengan komunitas peduli, kami selalu membutuhkan lebih banyak relawan</li>
+      </ul>
+      <a href="#" class="btn-green">Join With Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Daftarkan email Anda untuk mendapatkan informasi terbaru tentang program dan kegiatan kami.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your Email Address"/>
+        <button>Sub</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="fas fa-angle-right"></i> Pelestarian Hutan</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Konservasi Satwa</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Edukasi Lingkungan</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Daur Ulang</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Energi Terbarukan</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Donasi Program</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Volunteer</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="fas fa-angle-right"></i> Bergabung Relawan</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Program Pelatihan</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Jadwal Kegiatan</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Laporan Tahunan</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Tentang Kami</a></li>
+        <li><a href="#"><i class="fas fa-angle-right"></i> Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Gallery</h4>
+      <div class="gallery-mini">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=70" alt=""/>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <a href="#" style="color:var(--green)">Environs</a>. All Rights Reserved. Developed by Rafa</p>
+    <div class="footer-bottom-socials">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let current = 0;
+  const slides = document.getElementById('slider');
+  const dots = document.querySelectorAll('.dot');
+  const total = 3;
+
+  function updateCarousel() {
+    slides.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function changeSlide(dir) {
+    current = (current + dir + total) % total;
+    updateCarousel();
+  }
+
+  function goToSlide(i) {
+    current = i;
+    updateCarousel();
+  }
+
+  setInterval(() => changeSlide(1), 5000);
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  function openLightbox(el) {
+    const src = el.querySelector('img').src;
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    if (!item.classList.contains('tall')) {
+      item.style.height = '220px';
+    } else {
+      item.style.height = '450px';
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const mainHeader = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      mainHeader.classList.add('scrolled');
+    } else {
+      mainHeader.classList.remove('scrolled');
+    }
+  });
+</script>
+</body>
+</html>

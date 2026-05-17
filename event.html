@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environs - Events</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="topbar d-flex justify-content-between align-items-center">
+            <div>
+                <i class="bi bi-envelope-fill me-2"></i>info@environment.com
+                <a href="https://wa.me/qr/V6PRBVIOAZMVK1" class="text-white ms-3"><i class="bi bi-whatsapp"></i></a>
+                <i class="me-1"></i>whatsapp
+            </div>
+            <div class="d-none d-md-block">
+                <a href="#" class="text-white ms-3"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/dimas_bruhh/" class="text-white ms-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white ms-3"><i class="bi bi-twitter-x"></i></a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">environment</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="event.html">Event</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Pages
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                                <li><a class="dropdown-item" href="galeri.html">Gallery</a></li>
+                                <li><a class="dropdown-item" href="voluntir.html">Volunteer</a></li>
+                                <li><a class="dropdown-item" href="donate.html">Donate</a></li>
+                                <li><a class="dropdown-item" href="eror.html">404 Error</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <a href="#" class="btn-donate">Donate Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="page-hero">
+        <div class="page-hero__overlay"></div>
+        <div class="page-hero__content">
+            <h1>Upcoming Events</h1>
+            <p>Kami hadir untuk membawa perubahan nyata melalui aksi lingkungan, edukasi masyarakat, dan kolaborasi demi menjaga keseimbangan alam serta keberlanjutan bumi.</p>
+        </div>
+    </section>
+    <main>
+    </main>
+
+<style>
+  :root {
+    --primary-green: #438a70;
+    --dark-green: #2c4a3a;
+    --green: #2d7a4f;
+    --green-light: #3a9e68;
+    --green-dark: #1b5236;
+    --gold: #c9a84c;
+    --cream: #f7f4ef;
+    --dark: #1a1a1a;
+    --gray: #6b7280;
+  }
+  body {
+    font-family: 'Segoe UI', 'DM Sans', sans-serif;
+    margin: 0;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+  .page-hero {
+    position: relative;
+    height: 55vh;
+    min-height: 320px;
+    background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 100px;
+  }
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(27,82,54,0.75) 0%, rgba(44,74,58,0.6) 100%);
+  }
+  .page-hero__content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 0 24px;
+  }
+  .page-hero__content h1 {
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 800;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .page-hero__content p {
+    font-size: 15px;
+    max-width: 580px;
+    margin: 0 auto;
+    opacity: 0.88;
+    line-height: 1.7;
+  }
+  #mainHeader {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 1050;
+    transition: all 0.4s ease-in-out;
+    background: white;
+    border-radius: 8px;
+    overflow: visible;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  #mainHeader .topbar {
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+  }
+  #mainHeader.scrolled {
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+  .topbar {
+    background-color: var(--dark-green);
+    color: white;
+    font-size: 13px;
+    padding: 8px 25px;
+    transition: all 0.3s ease;
+  }
+  #mainHeader.scrolled .topbar {
+    margin-top: -40px;
+    opacity: 0;
+  }
+  .navbar { padding: 15px 25px; background: white !important; }
+  .navbar-brand { color: var(--primary-green) !important; font-weight: 700; font-size: 26px; }
+  .btn-donate { background-color: #5cb874; color: white; border-radius: 4px; padding: 8px 20px; font-weight: 600; text-decoration: none; }
+
+  .dropdown-menu {
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 8px 0;
+    min-width: 160px;
+  }
+  .dropdown-item {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    padding: 9px 20px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: var(--primary-green);
+    color: white;
+  }
+  .nav-link.dropdown-toggle::after { margin-left: 5px; }
+
+  footer { background: #1a1a1a; color: #bbb; padding: 60px 60px 0; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+  }
+  .footer-col h4 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  .footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 32px; height: 2px;
+    background: var(--green);
+  }
+  .footer-col p { font-size: 13px; line-height: 1.8; color: #999; }
+
+  .newsletter-form { display: flex; gap: 8px; margin-top: 14px; }
+  .newsletter-form input {
+    flex: 1;
+    padding: 9px 14px;
+    border-radius: 4px;
+    border: none;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 13px;
+  }
+  .newsletter-form button {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background .2s;
+  }
+  .newsletter-form button:hover { background: var(--green-dark); }
+ .uev__section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+    font-family: 'Source Sans 3', sans-serif;
+    box-sizing: border-box;
+  }
+
+  .uev__section *,
+  .uev__section *::before,
+  .uev__section *::after {
+    box-sizing: border-box;
+  }
+  .uev__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4caf50;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .uev__heading {
+    font-size: clamp(20px, 3vw, 34px);
+    font-weight: 800;
+    color: #111;
+    line-height: 1.25;
+    font-family: 'Source Sans 3', sans-serif;
+    margin: 0;
+    text-align: center;
+  }
+  .uev__header {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  .uev__navrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .uev__navbtn {
+    width: 46px;
+    height: 46px;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+    font-family: sans-serif;
+  }
+  .uev__navbtn:hover {
+    background: #388e3c;
+    transform: scale(1.05);
+  }
+  .uev__slider-outer {
+    overflow: hidden;
+    flex: 1;
+    margin: 0 16px;
+  }
+  .uev__slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .uev__card {
+    flex: 0 0 calc((100% - 40px) / 3);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+  }
+  @media (max-width: 900px) {
+    .uev__card { flex: 0 0 calc((100% - 20px) / 2); }
+  }
+  @media (max-width: 560px) {
+    .uev__card { flex: 0 0 100%; }
+  }
+  .uev__imgwrap {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .uev__imgwrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .uev__card:hover .uev__imgwrap img {
+    transform: scale(1.09);
+  }
+  .uev__body {
+    background: #2e8b2e;
+    padding: 18px 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .uev__meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .uev__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .uev__meta-item svg {
+    flex-shrink: 0;
+  }
+  .uev__card-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .uev__card-text {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .uev__readbtn {
+    display: inline-block;
+    background: #fff;
+    color: #222;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 22px;
+    border-radius: 4px;
+    border: 1.5px solid #ddd;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: background 0.2s;
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  .uev__readbtn:hover { background: #f0f0f0; }
+
+  .footer-links { list-style: none; padding: 0; margin: 0; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: #999; transition: color .2s; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .footer-links a i { color: var(--green); font-size: 12px; }
+  .footer-links a:hover { color: var(--green); }
+
+  .gallery-mini {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .gallery-mini img { width: 100%; height: 65px; object-fit: cover; border-radius: 3px; }
+
+  .footer-bottom {
+    border-top: 1px solid #2a2a2a;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-bottom p { font-size: 12.5px; color: #666; }
+  .footer-bottom-socials a { color: #666; margin-left: 14px; font-size: 14px; transition: color .2s; }
+  .footer-bottom-socials a:hover { color: var(--green); }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+<section class="uev__section">
+  <div class="uev__header">
+    <span class="uev__label">Upcoming Events</span>
+    <h2 class="uev__heading">Bantulah hari ini karena besok mungkin Anda membutuhkan lebih banyak bantuan!</h2>
+  </div>
+  <div class="uev__navrow">
+    <button class="uev__navbtn" id="uevPrev" aria-label="Previous">&#8249;</button>
+    <div class="uev__slider-outer">
+      <div class="uev__slider-track" id="uevTrack">
+
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=700&q=80" alt="Event Sosial">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Jakarta
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                12 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Event Sosial</div>
+            <p class="uev__card-text">Membantu masyarakat sekitar...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Lingkungan">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Bandung
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                15 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Lingkungan</div>
+            <p class="uev__card-text">Program kebersihan kota...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1569163139599-0f4517e36f51?w=700&q=80" alt="Relawan">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Surabaya
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                18 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Relawan</div>
+            <p class="uev__card-text">Gabung jadi relawan...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=700&q=80" alt="Daur Ulang">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Yogyakarta
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                22 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Daur Ulang Sampah</div>
+            <p class="uev__card-text">Workshop pengolahan sampah kreatif...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+        <div class="uev__card">
+          <div class="uev__imgwrap">
+            <img src="https://images.unsplash.com/photo-1542601906897-d3b169391657?w=700&q=80" alt="Tanam Pohon">
+          </div>
+          <div class="uev__body">
+            <div class="uev__meta">
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Medan
+              </span>
+              <span class="uev__meta-item">
+                <svg width="13" height="13" fill="rgba(255,255,255,0.85)" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                28 Feb
+              </span>
+            </div>
+            <div class="uev__card-title">Tanam Pohon</div>
+            <p class="uev__card-text">Gerakan menanam 1000 pohon bersama...</p>
+            <button class="uev__readbtn">Read More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="uev__navbtn" id="uevNext" aria-label="Next">&#8250;</button>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var track = document.getElementById('uevTrack');
+    var prevBtn = document.getElementById('uevPrev');
+    var nextBtn = document.getElementById('uevNext');
+    var currentIndex = 0;
+
+    function uevGetVisible() {
+      var w = track.parentElement.offsetWidth;
+      if (w < 560) return 1;
+      if (w < 900) return 2;
+      return 3;
+    }
+    function uevTotalCards() {
+      return track.querySelectorAll('.uev__card').length;
+    }
+    function uevGetCardWidth() {
+      var visible = uevGetVisible();
+      var gap = 20;
+      var outerW = track.parentElement.offsetWidth;
+      return (outerW - gap * (visible - 1)) / visible + gap;
+    }
+    function uevSlide() {
+      var offset = currentIndex * uevGetCardWidth();
+      track.style.transform = 'translateX(-' + offset + 'px)';
+    }
+    function uevMaxIndex() {
+      return Math.max(0, uevTotalCards() - uevGetVisible());
+    }
+
+    nextBtn.addEventListener('click', function () {
+      currentIndex = currentIndex >= uevMaxIndex() ? 0 : currentIndex + 1;
+      uevSlide();
+    });
+
+    prevBtn.addEventListener('click', function () {
+      currentIndex = currentIndex <= 0 ? uevMaxIndex() : currentIndex - 1;
+      uevSlide();
+    });
+
+    window.addEventListener('resize', function () {
+      currentIndex = Math.min(currentIndex, uevMaxIndex());
+      uevSlide();
+    });
+  })();
+  </script>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Daftarkan email Anda untuk mendapatkan informasi terbaru tentang program dan kegiatan kami.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your Email Address"/>
+        <button>Sub</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Pelestarian Hutan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Konservasi Satwa</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Edukasi Lingkungan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Daur Ulang</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Energi Terbarukan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Donasi Program</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Volunteer</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Bergabung Relawan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Program Pelatihan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Jadwal Kegiatan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Laporan Tahunan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Tentang Kami</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Gallery</h4>
+      <div class="gallery-mini">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=70" alt=""/>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <a href="#" style="color:var(--green)">Environs</a>. All Rights Reserved. Developed by Rafa</p>
+    <div class="footer-bottom-socials">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter-x"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function () {
+    const header = document.getElementById('mainHeader');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

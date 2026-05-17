@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Environs - Hero Slider</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="topbar d-flex justify-content-between align-items-center">
+            <div>
+                <i class="bi bi-envelope-fill me-2"></i>info@environment.com
+                <a href="https://wa.me/qr/V6PRBVIOAZMVK1" class="text-white ms-3"><i class="bi bi-whatsapp"></i></a>
+                <i class="me-1"></i>whatsapp
+            </div>
+            <div class="d-none d-md-block">
+                <a href="#" class="text-white ms-3"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/dimas_bruhh/" class="text-white ms-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white ms-3"><i class="bi bi-twitter-x"></i></a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">environment</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="event.html">Event</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Pages
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                                <li><a class="dropdown-item" href="galeri.html">Gallery</a></li>
+                                <li><a class="dropdown-item" href="voluntir.html">Volunteer</a></li>
+                                <li><a class="dropdown-item" href="donate.html">Donate</a></li>
+                                <li><a class="dropdown-item" href="eror.html">404 Error</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <a href="" class="btn-donate">Donate Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+<section class="page-hero">
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+        <h1>About Us</h1>
+        <p>Kami hadir untuk membawa perubahan nyata melalui aksi lingkungan, edukasi masyarakat, dan kolaborasi demi menjaga keseimbangan alam serta keberlanjutan bumi.</p>
+
+    </div>
+</section>
+<style>
+  :root {
+            --primary-green: #438a70;
+            --dark-green: #2c4a3a;
+            --green: #2d7a4f;
+            --green-light: #3a9e68;
+            --green-dark: #1b5236;
+            --gold: #c9a84c;
+            --cream: #f7f4ef;
+            --dark: #1a1a1a;
+            --gray: #6b7280;
+        }
+        body { 
+            font-family: 'Segoe UI', 'DM Sans', sans-serif; 
+            margin: 0; 
+            background: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        .page-hero {
+            position: relative;
+            height: 55vh;
+            min-height: 320px;
+            background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .page-hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(27,82,54,0.75) 0%, rgba(44,74,58,0.6) 100%);
+        }
+        .page-hero__content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 0 24px;
+        }
+        .page-hero__content h1 {
+            font-size: clamp(32px, 5vw, 58px);
+            font-weight: 800;
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
+        .page-hero__content p {
+            font-size: 15px;
+            max-width: 580px;
+            margin: 0 auto 20px;
+            opacity: 0.88;
+            line-height: 1.7;
+        }
+        #mainHeader {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            z-index: 1050;
+            transition: all 0.4s ease-in-out;
+            background: white;
+            border-radius: 8px;
+            overflow: visible;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        #mainHeader .topbar {
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+        #mainHeader.scrolled {
+            top: 0;
+            width: 100%;
+            border-radius: 0;
+        }
+        .topbar {
+            background-color: var(--dark-green);
+            color: white;
+            font-size: 13px;
+            padding: 8px 25px;
+            transition: all 0.3s ease;
+        }
+        #mainHeader.scrolled .topbar {
+            margin-top: -40px;
+            opacity: 0;
+        }
+        .navbar { padding: 15px 25px; background: white !important; }
+        .navbar-brand { color: var(--primary-green) !important; font-weight: 700; font-size: 26px; }
+        .btn-donate { background-color: #5cb874; color: white; border-radius: 4px; padding: 8px 20px; font-weight: 600; text-decoration: none; }
+        .dropdown-menu {
+            border: none;
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            padding: 8px 0;
+            min-width: 160px;
+        }
+        .dropdown-item {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark);
+            padding: 9px 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        .nav-link.dropdown-toggle::after {
+            margin-left: 5px;
+        }
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.about {
+  padding: 80px 10%;
+  background: #f8f8f8;
+}
+.about-container {
+  max-width: 1100px;    
+  margin: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 30px;
+  flex-wrap: wrap;      
+  padding: 20px;
+}
+.about-left img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+.about-right {
+  max-width: 500px;
+}
+.about-right h5 {
+  color: green;
+  margin-bottom: 10px;
+}
+.about-right h2 {
+  margin-bottom: 15px;
+}
+.about-right p {
+  margin-bottom: 10px;
+}
+.about-card {
+  background: #eaf4ec;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+    .tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.tab-btn {
+  padding: 8px 15px;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.tab-btn.active {
+  background: green;
+  color: white;
+}
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.4s;
+}
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.btn {
+  display: inline-block;
+  background: green;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+    .checklist { margin-bottom: 24px; }
+    .checklist li {
+      font-size: 13.5px;
+      color: #555;
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .checklist li i { color: var(--green); font-size: 13px; }
+    .btn-green {
+      background: var(--green);
+      color: #fff;
+      padding: 11px 28px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-block;
+      transition: background .2s;
+    }
+    .btn-green:hover { background: var(--green-dark); }
+      
+footer { background: #1a1a1a; color: #bbb; padding: 60px 60px 0; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 32px; height: 2px;
+      background: var(--green);
+    }
+    .footer-col p { font-size: 13px; line-height: 1.8; color: #999; }
+    .newsletter-form { display: flex; gap: 8px; margin-top: 14px; }
+    .newsletter-form input {
+      flex: 1;
+      padding: 9px 14px;
+      border-radius: 4px;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .newsletter-form button {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .newsletter-form button:hover { background: var(--green-dark); }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: #999; transition: color .2s; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .footer-links a i { color: var(--green); font-size: 12px; }
+    .footer-links a:hover { color: var(--green); }
+    .gallery-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .gallery-mini img { width: 100%; height: 65px; object-fit: cover; border-radius: 3px; }
+    .footer-contact li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: #999;
+      align-items: flex-start;
+    }
+    .footer-contact li i { color: var(--green); margin-top: 3px; }
+    .footer-bottom {
+      border-top: 1px solid #2a2a2a;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-bottom p { font-size: 12.5px; color: #666; }
+    .footer-bottom-socials a { color: #666; margin-left: 14px; font-size: 14px; transition: color .2s; }
+    .footer-bottom-socials a:hover { color: var(--green); }
+    @media (max-width: 900px) {
+      .cards-grid, .program-grid, .events-grid, .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-inner, .volunteer-inner { flex-direction: column; }
+      .about-img { flex: none; width: 100%; }
+      .counter-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+</style>
+
+  <section class="about">
+  <div class="about-container">
+    <div class="about-left">
+      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
+    </div>
+    <div class="about-right">
+      <h5>ABOUT US</h5>
+      <h2>Tujuan Kami Adalah Menjaga Kelestarian Alam</h2>
+      <p>
+        Kami adalah organisasi yang berdedikasi untuk memulihkan ekosistem
+        dan mengedukasi masyarakat tentang pentingnya keberlanjutan.
+      </p>
+      <div class="about-card">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="openTab(event,'about')">About</button>
+          <button class="tab-btn" onclick="openTab(event,'mission')">Mission</button>
+          <button class="tab-btn" onclick="openTab(event,'vision')">Vision</button>
+        </div>
+        <div class="tab-content active" id="about">
+          <h2>Tentang Kami</h2>
+          <p>Mengurangi dampak pemanasan global melalui aksi nyata dan kampanye lingkungan.</p>
+        </div>
+        <div class="tab-content" id="mission">
+           <h2>Tentang Kami</h2>
+          <p>Misi kami adalah menjaga keseimbangan alam secara berkelanjutan.</p>
+        </div>
+        <div class="tab-content" id="vision">
+           <h2>Tentang Kami</h2>
+          <p>Visi kami adalah menciptakan dunia yang lebih hijau.</p>
+        </div>
+        <a href="#" class="btn">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function openTab(evt, tabId) {
+  document.querySelectorAll(".tab-content").forEach(el => {
+    el.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
+<script>
+function openTab(evt, tabId) {
+  document.querySelectorAll(".tab-content").forEach(el => {
+    el.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Daftarkan email Anda untuk mendapatkan informasi terbaru tentang program dan kegiatan kami.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your Email Address"/>
+        <button>Sub</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Pelestarian Hutan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Konservasi Satwa</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Edukasi Lingkungan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Daur Ulang</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Energi Terbarukan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Donasi Program</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Volunteer</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Bergabung Relawan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Program Pelatihan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Jadwal Kegiatan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Laporan Tahunan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Tentang Kami</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Gallery</h4>
+      <div class="gallery-mini">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=70" alt=""/>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <a href="#" style="color:var(--green)">Environs</a>. All Rights Reserved. Developed by Rafa</p>
+    <div class="footer-bottom-socials">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter-x"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let current = 0;
+  const slides = document.getElementById('slider');
+  const dots = document.querySelectorAll('.dot');
+  const total = 3;
+  function updateCarousel() {
+    slides.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  function changeSlide(dir) {
+    current = (current + dir + total) % total;
+    updateCarousel();
+  }
+  function goToSlide(i) {
+    current = i;
+    updateCarousel();
+  }
+  setInterval(() => changeSlide(1), 5000);
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  function openLightbox(el) {
+    const src = el.querySelector('img').src;
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    if (!item.classList.contains('tall')) {
+      item.style.height = '220px';
+    } else {
+      item.style.height = '450px';
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

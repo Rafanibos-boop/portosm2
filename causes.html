@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Environs - Hero Slider</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="topbar d-flex justify-content-between align-items-center">
+            <div>
+                <i class="bi bi-envelope-fill me-2"></i>info@environment.com
+                <a href="https://wa.me/qr/V6PRBVIOAZMVK1" class="text-white ms-3"><i class="bi bi-whatsapp"></i></a>
+                <i class="me-1"></i>whatsapp
+            </div>
+            <div class="d-none d-md-block">
+                <a href="#" class="text-white ms-3"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/dimas_bruhh/" class="text-white ms-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white ms-3"><i class="bi bi-twitter-x"></i></a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">environment</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="causes.html">Causes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="event.html">Event</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Pages
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                                <li><a class="dropdown-item" href="galeri.html">Gallery</a></li>
+                                <li><a class="dropdown-item" href="voluntir.html">Volunteer</a></li>
+                                <li><a class="dropdown-item" href="donate.html">Donate</a></li>
+                                <li><a class="dropdown-item" href="eror.html">404 Error</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <a href="#" class="btn-donate">Donate Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+<section id="home">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('https://picsum.photos/id/1043/1920/1080');">
+                <div class="carousel-caption d-none d-md-block text-center">
+                    <h4 class="text-uppercase"></h4>
+                    <h1 class="display-4 fw-bold">Recent Causes </br></h1>
+                    <p class="lead">Lingkungan Membutuhkan Perlindungan Kita</p>
+                    <a href="#" class="btn btn-success mt-3">Daftar Relawan Pengajar</a>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('https://picsum.photos/id/1044/1920/1080');">
+                <div class="carousel-caption d-none d-md-block text-center">
+                    <h1 class="display-4 fw-bold">Pulihkan Hijau Bumi Kita</h1>
+                    <p class="lead">Bersama kita bisa menanam kembali dan menghijaukan bumi tercinta.</p>
+                    <a href="#" class="btn btn-success mt-3">Donasi Sekarang</a>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('https://picsum.photos/id/1002/1920/1080');">
+                <div class="carousel-caption d-none d-md-block text-center">
+                    <h1 class="display-4 fw-bold">Jaga Laut, Jaga Kehidupan</h1>
+                    <p class="lead">Melindungi ekosistem laut demi masa depan yang berkelanjutan.</p>
+                    <a href="#" class="btn btn-success mt-3">Aksi Sekarang</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</section>
+
+<style>
+  :root {
+            --primary-green: #438a70;
+            --dark-green: #2c4a3a;
+            --green: #2d7a4f;
+            --green-light: #3a9e68;
+            --green-dark: #1b5236;
+            --gold: #c9a84c;
+            --cream: #f7f4ef;
+            --dark: #1a1a1a;
+            --gray: #6b7280;
+        }
+        body { 
+            font-family: 'Segoe UI', 'DM Sans', sans-serif; 
+            margin: 0; 
+            background: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        #mainHeader {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            z-index: 1050;
+            transition: all 0.4s ease-in-out;
+            background: white;
+            border-radius: 8px;
+            overflow: visible;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        #mainHeader .topbar {
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+        #mainHeader.scrolled {
+            top: 0;
+            width: 100%;
+            border-radius: 0;
+        }
+        .topbar {
+            background-color: var(--dark-green);
+            color: white;
+            font-size: 13px;
+            padding: 8px 25px;
+            transition: all 0.3s ease;
+        }
+        #mainHeader.scrolled .topbar {
+            margin-top: -40px;
+            opacity: 0;
+        }
+
+        .navbar { padding: 15px 25px; background: white !important; }
+        .navbar-brand { color: var(--primary-green) !important; font-weight: 700; font-size: 26px; }
+        .btn-donate { background-color: #5cb874; color: white; border-radius: 4px; padding: 8px 20px; font-weight: 600; text-decoration: none; }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            padding: 8px 0;
+            min-width: 160px;
+        }
+        .dropdown-item {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark);
+            padding: 9px 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        .nav-link.dropdown-toggle::after {
+            margin-left: 5px;
+        }
+
+        .carousel-item {
+            height: 90vh;
+            min-height: 300px;
+            background: no-repeat center center scroll;
+            background-size: cover;
+        }
+        .carousel-caption {
+         top: 50%;
+         bottom: auto;
+         transform: translateY(-50%);
+         }
+
+.rcx__section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 24px 80px;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    box-sizing: border-box;
+  }
+  .rcx__section *,
+  .rcx__section *::before,
+  .rcx__section *::after {
+    box-sizing: border-box;
+  }
+  .rcx__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4caf50;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .rcx__heading {
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .rcx__desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.75;
+    max-width: 860px;
+    margin: 0 auto 44px;
+  }
+  .rcx__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 1000px) {
+    .rcx__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .rcx__grid { grid-template-columns: 1fr; }
+  }
+
+  /* CARD */
+  .rcx__card {
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+  }
+  /* IMAGE WRAP */
+  .rcx__imgwrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .rcx__imgwrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .rcx__card:hover .rcx__imgwrap img {
+    transform: scale(1.05);
+  }
+
+  .rcx__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    z-index: 1;
+  }
+  .rcx__badge {
+    position: absolute;
+    top: 14px;
+    right: 0;
+    background: #4caf50;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 7px 16px;
+    border-radius: 4px 0 0 4px;
+    font-family: 'Source Sans 3', sans-serif;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.2s;
+  }
+  .rcx__badge:hover { background: #388e3c; }
+
+  .rcx__meta {
+    position: absolute;
+    bottom: 26px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    z-index: 2;
+  }
+  .rcx__meta-item {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .rcx__track {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 7px;
+    background: rgba(255,255,255,0.25);
+    z-index: 3;
+  }
+  .rcx__fill {
+    height: 100%;
+    background: #4caf50;
+    width: 0%;
+    transition: width 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+  }
+  .rcx__pct {
+    position: absolute;
+    right: 0;
+    top: -22px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Source Sans 3', sans-serif;
+    white-space: nowrap;
+  }
+  .rcx__body {
+    background: #2e8b2e;
+    padding: 20px 18px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .rcx__title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .rcx__text {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-family: 'Source Sans 3', sans-serif;
+    flex: 1;
+  }
+  .rcx__readbtn {
+    display: inline-block;
+    background: #fff;
+    color: #222;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 4px;
+    border: 1.5px solid #ddd;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: background 0.2s;
+    align-self: flex-start;
+    margin-top: auto;
+  }
+      
+footer { background: #1a1a1a; color: #bbb; padding: 60px 60px 0; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 32px; height: 2px;
+      background: var(--green);
+    }
+    .footer-col p { font-size: 13px; line-height: 1.8; color: #999; }
+    .newsletter-form { display: flex; gap: 8px; margin-top: 14px; }
+    .newsletter-form input {
+      flex: 1;
+      padding: 9px 14px;
+      border-radius: 4px;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .newsletter-form button {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .newsletter-form button:hover { background: var(--green-dark); }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: #999; transition: color .2s; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .footer-links a i { color: var(--green); font-size: 12px; }
+    .footer-links a:hover { color: var(--green); }
+    .gallery-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .gallery-mini img { width: 100%; height: 65px; object-fit: cover; border-radius: 3px; }
+    .footer-contact li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: #999;
+      align-items: flex-start;
+    }
+    .footer-contact li i { color: var(--green); margin-top: 3px; }
+    .footer-bottom {
+      border-top: 1px solid #2a2a2a;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-bottom p { font-size: 12.5px; color: #666; }
+    .footer-bottom-socials a { color: #666; margin-left: 14px; font-size: 14px; transition: color .2s; }
+    .footer-bottom-socials a:hover { color: var(--green); }
+
+    /* Responsive minimal */
+    @media (max-width: 900px) {
+      .cards-grid, .program-grid, .events-grid, .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-inner, .volunteer-inner { flex-direction: column; }
+      .about-img { flex: none; width: 100%; }
+      .counter-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+</style>
+
+   <section class="rcx__section">
+  <span class="rcx__label">Recent Causes</span>
+  <h2 class="rcx__heading">Lingkungan Membutuhkan Perlindungan Kita</h2>
+  <p class="rcx__desc">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis eum perferendis sint et eos!
+    Voluptates mollitia aliquid quam modi veritatis. Obcaecati ipsam, repellat beatae vel
+    necessitatibus voluptate facere exercitationem porro!
+  </p>
+
+  <div class="rcx__grid">
+    <div class="rcx__card">
+      <div class="rcx__imgwrap">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" alt="Kegiatan Lingkungan">
+        <div class="rcx__overlay"></div>
+        <span class="rcx__badge">Donate Now</span>
+        <div class="rcx__meta">
+          <span class="rcx__meta-item">&#9873; Goal: $3000</span>
+          <span class="rcx__meta-item">&#128176; Raised: $1000</span>
+        </div>
+        <div class="rcx__track">
+          <div class="rcx__fill" data-rcx-target="47">
+            <span class="rcx__pct">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcx__body">
+        <div class="rcx__title">Pertama Kegiatan Lingkungan</div>
+        <p class="rcx__text">Menjaga lingkungan dari pencemaran akibat ulah manusia itu sendiri.</p>
+        <button class="rcx__readbtn">Read More</button>
+      </div>
+    </div>
+    <div class="rcx__card">
+      <div class="rcx__imgwrap">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Bangun Sekolah">
+        <div class="rcx__overlay"></div>
+        <span class="rcx__badge">Donate Now</span>
+        <div class="rcx__meta">
+          <span class="rcx__meta-item">&#9873; Goal: $5000</span>
+          <span class="rcx__meta-item">&#128176; Raised: $3000</span>
+        </div>
+        <div class="rcx__track">
+          <div class="rcx__fill" data-rcx-target="60">
+            <span class="rcx__pct">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcx__body">
+        <div class="rcx__title">Bangun Sekolah untuk anak-anak miskin</div>
+        <p class="rcx__text">Pendidikan untuk yang layak untuk anak kurang mampu.</p>
+        <button class="rcx__readbtn">Read More</button>
+      </div>
+    </div>
+    <div class="rcx__card">
+      <div class="rcx__imgwrap">
+        <img src="https://images.unsplash.com/photo-1581922814484-0b48460b7010?w=600&q=80" alt="Air Bersih">
+        <div class="rcx__overlay"></div>
+        <span class="rcx__badge">Donate Now</span>
+        <div class="rcx__meta">
+          <span class="rcx__meta-item">&#9873; Goal: $3000</span>
+          <span class="rcx__meta-item">&#128176; Raised: $2000</span>
+        </div>
+        <div class="rcx__track">
+          <div class="rcx__fill" data-rcx-target="70">
+            <span class="rcx__pct">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcx__body">
+        <div class="rcx__title">Bangun sistem Air Bersih untuk orang miskin</div>
+        <p class="rcx__text">Mari kita bangun akses air bersih bagi mereka yang membutuhkan!</p>
+        <button class="rcx__readbtn">Read More</button>
+      </div>
+    </div>
+    <div class="rcx__card">
+      <div class="rcx__imgwrap">
+        <img src="https://images.unsplash.com/photo-1569163139599-0f4517e36f51?w=600&q=80" alt="Kegiatan Lingkungan">
+        <div class="rcx__overlay"></div>
+        <span class="rcx__badge">Donate Now</span>
+        <div class="rcx__meta">
+          <span class="rcx__meta-item">&#9873; Goal: $1000</span>
+          <span class="rcx__meta-item">&#128176; Raised: $500</span>
+        </div>
+        <div class="rcx__track">
+          <div class="rcx__fill" data-rcx-target="50">
+            <span class="rcx__pct">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcx__body">
+        <div class="rcx__title">Kegiatan Lingkungan Pertama</div>
+        <p class="rcx__text">Menjaga bumi tetap hijau agar kita dapat memberikannya pada anak cucu kita kelak.</p>
+        <button class="rcx__readbtn">Read More</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var rcxAnimated = false;
+
+    function rcxAnimate() {
+      var fills = document.querySelectorAll('.rcx__fill[data-rcx-target]');
+      fills.forEach(function (fill, i) {
+        var target = parseInt(fill.getAttribute('data-rcx-target'));
+        var pct = fill.querySelector('.rcx__pct');
+        var duration = 1800;
+        var fps = 60;
+        var totalFrames = Math.round(duration / (1000 / fps));
+        var frame = 0;
+
+        setTimeout(function () {
+          var timer = setInterval(function () {
+            frame++;
+            var ease = 1 - Math.pow(1 - frame / totalFrames, 4);
+            var current = Math.round(ease * target);
+            fill.style.width = current + '%';
+            if (pct) pct.textContent = current + '%';
+            if (frame >= totalFrames) {
+              fill.style.width = target + '%';
+              if (pct) pct.textContent = target + '%';
+              clearInterval(timer);
+            }
+          }, 1000 / fps);
+        }, i * 200);
+      });
+    }
+
+    var section = document.querySelector('.rcx__section');
+    if (!section) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !rcxAnimated) {
+          rcxAnimated = true;
+          rcxAnimate();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    obs.observe(section);
+  })();
+</script>
+
+<script>
+function openTab(evt, tabId) {
+  document.querySelectorAll(".tab-content").forEach(el => {
+    el.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>Daftarkan email Anda untuk mendapatkan informasi terbaru tentang program dan kegiatan kami.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your Email Address"/>
+        <button>Sub</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Pelestarian Hutan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Konservasi Satwa</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Edukasi Lingkungan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Daur Ulang</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Energi Terbarukan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Donasi Program</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Volunteer</h4>
+      <ul class="footer-links">
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Bergabung Relawan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Program Pelatihan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Jadwal Kegiatan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Laporan Tahunan</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Tentang Kami</a></li>
+        <li><a href="#"><i class="bi bi-chevron-right"></i> Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Gallery</h4>
+      <div class="gallery-mini">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=200&q=70" alt=""/>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=70" alt=""/>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <a href="#" style="color:var(--green)">Environs</a>. All Rights Reserved. Developed by Rafa</p>
+    <div class="footer-bottom-socials">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter-x"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let current = 0;
+  const slides = document.getElementById('slider');
+  const dots = document.querySelectorAll('.dot');
+  const total = 3;
+
+  function updateCarousel() {
+    slides.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function changeSlide(dir) {
+    current = (current + dir + total) % total;
+    updateCarousel();
+  }
+
+  function goToSlide(i) {
+    current = i;
+    updateCarousel();
+  }
+
+  setInterval(() => changeSlide(1), 5000);
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  function openLightbox(el) {
+    const src = el.querySelector('img').src;
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    if (!item.classList.contains('tall')) {
+      item.style.height = '220px';
+    } else {
+      item.style.height = '450px';
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
